@@ -60,11 +60,22 @@ public class BookingMain {
                 System.out.print("Vaccinated [1]Yes [2]No\t? ");
                 ((Passenger)myPassenger[i]).getVaccine().setVaccineDeclaration(input.nextInt());
                 input.nextLine();
-                
+                    
+                    //if passenger not vacinated - booking will be canceled
                     if(((Passenger)myPassenger[i]).getVaccine().getVaccineDeclaration() == 1){
+                        //vaccine type
                         System.out.print("Vaccine type [1]Sinovac [2]Astrazeneca [3]Pfizer\t? ");
                         ((Passenger)myPassenger[i]).getVaccine().setVaccineType(input.nextInt());
                         input.nextLine();
+                        
+                        //vaccine date
+                        System.out.print("1st Dose [dd/mm/yy] : ");
+                        ((Passenger)myPassenger[i]).getVaccine().setFirstDose_Date(input.next());
+                        System.out.print("2nd Dose [dd/mm/yy] : ");
+                        ((Passenger)myPassenger[i]).getVaccine().setSecondDose_Date(input.next());
+                        
+                        System.out.print("Covid-19 Result : ");
+                        ((Passenger)myPassenger[i]).getVaccine().setCovid19_Result(input.next());
                     }
                     else{
                         break;

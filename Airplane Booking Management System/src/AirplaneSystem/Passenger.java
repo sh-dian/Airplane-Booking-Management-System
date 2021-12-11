@@ -11,6 +11,7 @@ package AirplaneSystem;
 public class Passenger extends Person{
     //data member
     private int luggage;
+    
     private Vaccine vaccine;
     
     Passenger(){

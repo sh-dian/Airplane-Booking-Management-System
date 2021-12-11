@@ -14,7 +14,7 @@ public class Vaccine {
     private int VaccineType;
     private String FirstDose_Date;
     private String SecondDose_Date;
-    private int covid19_Result;
+    private String covid19_Result;
     
     public void DisplayVaccineType(int VaccineType){
         
@@ -86,14 +86,14 @@ public class Vaccine {
     /**
      * @return the covid19_Result
      */
-    public int getCovid19_Result() {
+    public String getCovid19_Result() {
         return covid19_Result;
     }
 
     /**
      * @param covid19_Result the covid19_Result to set
      */
-    public void setCovid19_Result(int covid19_Result) {
+    public void setCovid19_Result(String covid19_Result) {
         this.covid19_Result = covid19_Result;
     }
 }
