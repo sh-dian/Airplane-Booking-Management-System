@@ -6,7 +6,7 @@ package AirplaneSystem;
 
 /**
  *
- * @author User
+ * @Group 8
  */
 import java.util.Scanner;
 public class BookingMain {
