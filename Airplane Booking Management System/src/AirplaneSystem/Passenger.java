@@ -13,6 +13,7 @@ public class Passenger extends Person{
     private int okuDeclaration;
     private Vaccine vaccine;
     private Ticket ticket;
+    Airplane airplane;
     
     Passenger(){
         super();

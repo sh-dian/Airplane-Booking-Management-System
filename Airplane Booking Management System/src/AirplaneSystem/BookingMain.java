@@ -44,11 +44,19 @@ public class BookingMain {
         int totalPassenger = input.nextInt(); 
         input.nextLine(); 
          
-        Person[] myPassenger = new Passenger[totalPassenger]; 
+        Person[] myPassenger = new Passenger[totalPassenger];
+        Airplane[] myAirAsia = new AirAsia[totalPassenger];
+        Airplane[] myMas = new Mas[totalPassenger];
+        Airplane[] myMalindo = new Malindo[totalPassenger];
+        
+        int plane = 0;
          
         for(int i =0; i < totalPassenger; i++){ 
-            myPassenger[i] = new Passenger(); 
-             
+            myPassenger[i] = new Passenger();
+            myAirAsia[i] = new AirAsia();
+            myMas[i] = new Mas();
+            myMalindo[i] = new Malindo();
+            
             //passenger detail 
             System.out.println("Passenger "+(i+1)); 
             System.out.print("Name\t?"); 
@@ -59,7 +67,7 @@ public class BookingMain {
             input.nextLine(); 
             
             //OKU
-            System.out.print("OKU 1-yes, 2-no?");
+            System.out.print("OKU 1-yes, 2-no? ");
             ((Passenger)myPassenger[i]).setOkuDeclaration(input.nextInt());
             input.nextLine(); 
             
@@ -69,7 +77,7 @@ public class BookingMain {
             input.nextLine(); 
                 
                 //flight trip
-                System.out.println("Destination: ");
+                System.out.print("Destination: ");
                 ((Passenger)myPassenger[i]).getTicket().setDestination(input.nextInt());
                 input.nextLine(); 
                 
@@ -92,6 +100,31 @@ public class BookingMain {
                     
                     System.out.print("Date Return: ");
                     ((Passenger)myPassenger[i]).getTicket().setDateReturn(input.nextLine());
+                }
+                
+                //Airplane
+                System.out.print("Airplane Type, 1-AirAsia, 2-Mas, 3-Malindo: ");
+                plane = input.nextInt();
+                input.nextLine();
+                
+                switch (plane) {
+                    case 1 -> {
+                        System.out.print("Airplane Code (1- AA052 / 2- AA889) : ");
+                        ((AirAsia)myAirAsia[i]).setAirplaneCode(input.nextInt());
+                        input.nextLine();
+                    }
+                    case 2 -> {
+                        System.out.print("Airplane Code (1- MAS55 / 2- MAS78) : ");
+                        ((Mas)myMas[i]).setAirplaneCode(input.nextInt());
+                        input.nextLine();
+                    }
+                    case 3 -> {
+                        System.out.print("Airplane Code (1- MD460 / 2- MD157) : ");
+                        ((Malindo)myMalindo[i]).setAirplaneCode(input.nextInt());
+                        input.nextLine();
+                    }
+                    default -> {
+                    }
                 }
                 
                     //Vaccine detail 
@@ -131,6 +164,21 @@ public class BookingMain {
                     ((Passenger)myPassenger[i]).getTicket().FlightDestination(((Passenger)myPassenger[i]).getTicket().getDestination());
                     ((Passenger)myPassenger[i]).getTicket().FClass(((Passenger)myPassenger[i]).getTicket().getFlightClass());
                     ((Passenger)myPassenger[i]).getTicket().Type(((Passenger)myPassenger[i]).getTicket().getTravelType());
+                    
+                    //plane
+                    switch (plane) {
+                        case 1 -> {
+                           myAirAsia[i].AirplaneCode();
+                        }
+                        case 2 -> {
+                            myMas[i].AirplaneCode();
+                        }
+                        case 3 -> {
+                            myMalindo[i].AirplaneCode();
+                        }
+                        default -> {
+                        }
+                    }
                     
                     //date travel
                     if(((Passenger)myPassenger[i]).getTicket().getTravelType() == 1){
