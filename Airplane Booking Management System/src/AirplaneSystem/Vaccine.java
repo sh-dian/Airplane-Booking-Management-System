@@ -9,15 +9,21 @@ package AirplaneSystem;
  * @author User
  */
 public class Vaccine {
-    //data member
     private int VaccineDeclaration;
     private int VaccineType;
     private String FirstDose_Date;
     private String SecondDose_Date;
     private String covid19_Result;
     
-    public void DisplayVaccineType(int VaccineType){
-        
+    Vaccine(){
+        VaccineDeclaration = 0;
+        VaccineType = 0;
+        FirstDose_Date = null;
+        SecondDose_Date = null;
+        covid19_Result = null;
+    }
+    
+    void DisplayVaccineType(int VaccineType){
         switch (getVaccineType()) {
             case 1 -> System.out.println("Vaccine Type: Sinovac");
             case 2 -> System.out.println("Vaccine Type: Astrazeneca");

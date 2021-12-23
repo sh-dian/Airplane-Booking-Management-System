@@ -9,12 +9,25 @@ package AirplaneSystem;
  * @author User
  */
 public class Person {
-    //data member
     protected String P_Name;
-    protected int P_Age;
     protected String P_Email;
-    protected String P_phoneNum;
     protected String P_icNum;
+    protected String P_phoneNum;
+    protected int P_Age;
+    
+    Person(){
+        P_Name = null;
+        P_icNum = null;
+        P_Age = 0;
+    }
+    
+    Person(String P_Name,String P_Email, String P_icNum, String P_phoneNum, int P_Age){
+        this.P_Name = P_Name;
+        this.P_Email = P_Email;
+        this.P_icNum = P_icNum;
+        this.P_phoneNum = P_phoneNum;
+        this.P_Age = P_Age;
+    }
 
     /**
      * @return the P_Name
@@ -28,20 +41,6 @@ public class Person {
      */
     public void setP_Name(String P_Name) {
         this.P_Name = P_Name;
-    }
-
-    /**
-     * @return the P_Age
-     */
-    public int getP_Age() {
-        return P_Age;
-    }
-
-    /**
-     * @param P_Age the P_Age to set
-     */
-    public void setP_Age(int P_Age) {
-        this.P_Age = P_Age;
     }
 
     /**
@@ -59,6 +58,20 @@ public class Person {
     }
 
     /**
+     * @return the P_icNum
+     */
+    public String getP_icNum() {
+        return P_icNum;
+    }
+
+    /**
+     * @param P_icNum the P_icNum to set
+     */
+    public void setP_icNum(String P_icNum) {
+        this.P_icNum = P_icNum;
+    }
+
+    /**
      * @return the P_phoneNum
      */
     public String getP_phoneNum() {
@@ -73,18 +86,17 @@ public class Person {
     }
 
     /**
-     * @return the P_icNum
+     * @return the P_Age
      */
-    public String getP_icNum() {
-        return P_icNum;
+    public int getP_Age() {
+        return P_Age;
     }
 
     /**
-     * @param P_icNum the P_icNum to set
+     * @param P_Age the P_Age to set
      */
-    public void setP_icNum(String P_icNum) {
-        this.P_icNum = P_icNum;
+    public void setP_Age(int P_Age) {
+        this.P_Age = P_Age;
     }
-    
     
 }

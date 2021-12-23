@@ -9,20 +9,17 @@ package AirplaneSystem;
  * @author User
  */
 public class Passenger extends Person{
-    //data member
     private int luggage;
-    
+    private int okuDeclaration;
     private Vaccine vaccine;
+    private Ticket ticket;
     
     Passenger(){
+        super();
+        luggage = 0;
+        okuDeclaration = 0;
         vaccine = new Vaccine();
-    }
-    
-    //method
-    public float LuggagePrice(){
-        float luggagePrice = 0;
-        
-        return luggagePrice;
+        ticket = new Ticket();
     }
 
     /**
@@ -40,6 +37,20 @@ public class Passenger extends Person{
     }
 
     /**
+     * @return the okuDeclaration
+     */
+    public int getOkuDeclaration() {
+        return okuDeclaration;
+    }
+
+    /**
+     * @param okuDeclaration the okuDeclaration to set
+     */
+    public void setOkuDeclaration(int okuDeclaration) {
+        this.okuDeclaration = okuDeclaration;
+    }
+
+    /**
      * @return the vaccine
      */
     public Vaccine getVaccine() {
@@ -52,4 +63,20 @@ public class Passenger extends Person{
     public void setVaccine(Vaccine vaccine) {
         this.vaccine = vaccine;
     }
+
+    /**
+     * @return the ticket
+     */
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    /**
+     * @param ticket the ticket to set
+     */
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
+    
+    
 }
