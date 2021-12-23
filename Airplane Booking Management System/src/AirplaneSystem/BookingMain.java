@@ -49,13 +49,18 @@ public class BookingMain {
         Airplane[] myMas = new Mas[totalPassenger];
         Airplane[] myMalindo = new Malindo[totalPassenger];
         
+        Ticket[] First = new FirstClass[totalPassenger];
+        Ticket[] BClass = new BusinessClass[totalPassenger];
+        
         int plane = 0;
          
-        for(int i =0; i < totalPassenger; i++){ 
+        for(int i =0; i < totalPassenger; i++){
             myPassenger[i] = new Passenger();
             myAirAsia[i] = new AirAsia();
             myMas[i] = new Mas();
             myMalindo[i] = new Malindo();
+            First[i] = new FirstClass();
+            BClass[i] = new BusinessClass();
             
             //passenger detail 
             System.out.println("Passenger "+(i+1)); 
@@ -89,68 +94,77 @@ public class BookingMain {
                 ((Passenger)myPassenger[i]).getTicket().setFlightClass(input.nextInt());
                 input.nextLine(); 
                 
-                //date travel
-                if(((Passenger)myPassenger[i]).getTicket().getTravelType() == 1){
-                    System.out.print("Date Travel: ");
-                    ((Passenger)myPassenger[i]).getTicket().setDateTravel(input.nextLine());
+                //Flight class
+                if(((Passenger)myPassenger[i]).getTicket().getFlightClass() == 2){
+                    ((FirstClass)First[i]).Seat();
+                    ((FirstClass)First[i]).setSeatNum(input.nextInt());
                 }
                 else{
-                    System.out.print("Date Travel: ");
-                    ((Passenger)myPassenger[i]).getTicket().setDateTravel(input.nextLine());
-                    
-                    System.out.print("Date Return: ");
-                    ((Passenger)myPassenger[i]).getTicket().setDateReturn(input.nextLine());
+                    ((BusinessClass)BClass[i]).Random();
                 }
                 
-                //Airplane
-                System.out.print("Airplane Type, 1-AirAsia, 2-Mas, 3-Malindo: ");
-                plane = input.nextInt();
-                input.nextLine();
-                
-                switch (plane) {
-                    case 1 -> {
-                        System.out.print("Airplane Code (1- AA052 / 2- AA889) : ");
-                        ((AirAsia)myAirAsia[i]).setAirplaneCode(input.nextInt());
-                        input.nextLine();
+                    //date travel
+                    if(((Passenger)myPassenger[i]).getTicket().getTravelType() == 1){
+                        System.out.print("Date Travel: ");
+                        ((Passenger)myPassenger[i]).getTicket().setDateTravel(input.nextLine());
                     }
-                    case 2 -> {
-                        System.out.print("Airplane Code (1- MAS55 / 2- MAS78) : ");
-                        ((Mas)myMas[i]).setAirplaneCode(input.nextInt());
-                        input.nextLine();
-                    }
-                    case 3 -> {
-                        System.out.print("Airplane Code (1- MD460 / 2- MD157) : ");
-                        ((Malindo)myMalindo[i]).setAirplaneCode(input.nextInt());
-                        input.nextLine();
-                    }
-                    default -> {
-                    }
-                }
-                
-                    //Vaccine detail 
-                    System.out.print("Vaccinated [1]Yes [2]No\t? "); 
-                    ((Passenger)myPassenger[i]).getVaccine().setVaccineDeclaration(input.nextInt()); 
-                    input.nextLine(); 
+                    else{
+                        System.out.print("Date Travel: ");
+                        ((Passenger)myPassenger[i]).getTicket().setDateTravel(input.nextLine());
 
-                        //if passenger not vacinated - booking will be canceled 
-                        if(((Passenger)myPassenger[i]).getVaccine().getVaccineDeclaration() == 1){ 
-                            //vaccine type 
-                            System.out.print("Vaccine type [1]Sinovac [2]Astrazeneca [3]Pfizer\t? "); 
-                            ((Passenger)myPassenger[i]).getVaccine().setVaccineType(input.nextInt()); 
-                            input.nextLine(); 
+                        System.out.print("Date Return: ");
+                        ((Passenger)myPassenger[i]).getTicket().setDateReturn(input.nextLine());
+                    }
 
-                            //vaccine date 
-                            System.out.print("1st Dose [dd/mm/yy] : "); 
-                            ((Passenger)myPassenger[i]).getVaccine().setFirstDose_Date(input.nextLine()); 
-                            System.out.print("2nd Dose [dd/mm/yy] : "); 
-                            ((Passenger)myPassenger[i]).getVaccine().setSecondDose_Date(input.nextLine()); 
+                    //Airplane
+                    System.out.print("Airplane Type, 1-AirAsia, 2-Mas, 3-Malindo: ");
+                    plane = input.nextInt();
+                    input.nextLine();
 
-                            System.out.print("Covid-19 Result : "); 
-                            ((Passenger)myPassenger[i]).getVaccine().setCovid19_Result(input.nextLine()); 
-                        } 
-                        else{ 
-                            break; 
+                    switch (plane) {
+                        case 1 -> {
+                            System.out.print("Airplane Code (1- AA052 / 2- AA889) : ");
+                            ((AirAsia)myAirAsia[i]).setAirplaneCode(input.nextInt());
+                            input.nextLine();
                         }
+                        case 2 -> {
+                            System.out.print("Airplane Code (1- MAS55 / 2- MAS78) : ");
+                            ((Mas)myMas[i]).setAirplaneCode(input.nextInt());
+                            input.nextLine();
+                        }
+                        case 3 -> {
+                            System.out.print("Airplane Code (1- MD460 / 2- MD157) : ");
+                            ((Malindo)myMalindo[i]).setAirplaneCode(input.nextInt());
+                            input.nextLine();
+                        }
+                        default -> {
+                        }
+                    }
+
+                        //Vaccine detail 
+                        System.out.print("Vaccinated [1]Yes [2]No\t? "); 
+                        ((Passenger)myPassenger[i]).getVaccine().setVaccineDeclaration(input.nextInt()); 
+                        input.nextLine(); 
+
+                            //if passenger not vacinated - booking will be canceled 
+                            if(((Passenger)myPassenger[i]).getVaccine().getVaccineDeclaration() == 1){ 
+                                //vaccine type 
+                                System.out.print("Vaccine type [1]Sinovac [2]Astrazeneca [3]Pfizer\t? "); 
+                                ((Passenger)myPassenger[i]).getVaccine().setVaccineType(input.nextInt()); 
+                                input.nextLine(); 
+
+                                //vaccine date 
+                                System.out.print("1st Dose [dd/mm/yy] : "); 
+                                ((Passenger)myPassenger[i]).getVaccine().setFirstDose_Date(input.nextLine()); 
+                                System.out.print("2nd Dose [dd/mm/yy] : "); 
+                                ((Passenger)myPassenger[i]).getVaccine().setSecondDose_Date(input.nextLine()); 
+
+                                System.out.print("Covid-19 Result : "); 
+                                ((Passenger)myPassenger[i]).getVaccine().setCovid19_Result(input.nextLine()); 
+                            } 
+                            else{ 
+                                break; 
+                            }
         } 
          
             //output 
@@ -164,6 +178,9 @@ public class BookingMain {
                     ((Passenger)myPassenger[i]).getTicket().FlightDestination(((Passenger)myPassenger[i]).getTicket().getDestination());
                     ((Passenger)myPassenger[i]).getTicket().FClass(((Passenger)myPassenger[i]).getTicket().getFlightClass());
                     ((Passenger)myPassenger[i]).getTicket().Type(((Passenger)myPassenger[i]).getTicket().getTravelType());
+                    
+                    //flight class
+                    ((BusinessClass)BClass[i]).Seat();
                     
                     //plane
                     switch (plane) {
