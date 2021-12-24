@@ -4,9 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/BookingMain.java</file>
-            <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/Passenger.java</file>
-            <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/Vaccine.java</file>
-            <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/Person.java</file>
+            <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/FirstClass.java</file>
+            <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/BusinessClass.java</file>
+            <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/EconomyClass.java</file>
+            <file>file:/D:/Users/User/Documents/UMP%20SEM%203/ASSIGNMENT/BCS2143%20-%20OBJECT%20ORIENTED%20PROGRAMMING/Airplane-Booking-Management-System/Airplane%20Booking%20Management%20System/src/AirplaneSystem/Ticket.java</file>
         </group>
     </open-files>
 </project-private>

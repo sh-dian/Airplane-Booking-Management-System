@@ -16,6 +16,7 @@ public class EconomyClass extends Ticket{
         seatNum = 0;
     }
 
+
     /**
      * @return the seatNum
      */

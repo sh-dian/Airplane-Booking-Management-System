@@ -49,18 +49,15 @@ public class BookingMain {
         Airplane[] myMas = new Mas[totalPassenger];
         Airplane[] myMalindo = new Malindo[totalPassenger];
         
-        Ticket[] First = new FirstClass[totalPassenger];
-        Ticket[] BClass = new BusinessClass[totalPassenger];
+        //Ticket[] First = new FirstClass[totalPassenger];
+        //Ticket[] BClass = new BusinessClass[totalPassenger];
         
         int plane = 0;
          
         for(int i =0; i < totalPassenger; i++){
             myPassenger[i] = new Passenger();
-            myAirAsia[i] = new AirAsia();
-            myMas[i] = new Mas();
-            myMalindo[i] = new Malindo();
-            First[i] = new FirstClass();
-            BClass[i] = new BusinessClass();
+            //First[i] = new FirstClass();
+            //BClass[i] = new BusinessClass();
             
             //passenger detail 
             System.out.println("Passenger "+(i+1)); 
@@ -94,14 +91,14 @@ public class BookingMain {
                 ((Passenger)myPassenger[i]).getTicket().setFlightClass(input.nextInt());
                 input.nextLine(); 
                 
-                //Flight class
+                /*//Flight class
                 if(((Passenger)myPassenger[i]).getTicket().getFlightClass() == 2){
                     ((FirstClass)First[i]).Seat();
                     ((FirstClass)First[i]).setSeatNum(input.nextInt());
                 }
                 else{
                     ((BusinessClass)BClass[i]).Random();
-                }
+                }*/
                 
                     //date travel
                     if(((Passenger)myPassenger[i]).getTicket().getTravelType() == 1){
@@ -120,6 +117,10 @@ public class BookingMain {
                     System.out.print("Airplane Type, 1-AirAsia, 2-Mas, 3-Malindo: ");
                     plane = input.nextInt();
                     input.nextLine();
+                    
+                    myAirAsia[i] = new AirAsia(plane);
+                    myMas[i] = new Mas(plane);
+                    myMalindo[i] = new Malindo(plane);
 
                     switch (plane) {
                         case 1 -> {
@@ -140,7 +141,7 @@ public class BookingMain {
                         default -> {
                         }
                     }
-
+                        
                         //Vaccine detail 
                         System.out.print("Vaccinated [1]Yes [2]No\t? "); 
                         ((Passenger)myPassenger[i]).getVaccine().setVaccineDeclaration(input.nextInt()); 
@@ -172,26 +173,27 @@ public class BookingMain {
                 //passenger detail 
                 System.out.println("\nOUTPUT"); 
                 System.out.println("Passenger "+(i+1)); 
-                System.out.println("Name\t:"+myPassenger[i].getP_Name()); 
-                    
+                System.out.println("Name\t:"+myPassenger[i].getP_Name());
+                   
                     //flight trip
                     ((Passenger)myPassenger[i]).getTicket().FlightDestination(((Passenger)myPassenger[i]).getTicket().getDestination());
                     ((Passenger)myPassenger[i]).getTicket().FClass(((Passenger)myPassenger[i]).getTicket().getFlightClass());
                     ((Passenger)myPassenger[i]).getTicket().Type(((Passenger)myPassenger[i]).getTicket().getTravelType());
                     
-                    //flight class
-                    ((BusinessClass)BClass[i]).Seat();
+                    /*//flight class
+                    ((BusinessClass)BClass[i]).Seat();*/
                     
                     //plane
                     switch (plane) {
                         case 1 -> {
-                           myAirAsia[i].AirplaneCode();
+                           ((AirAsia)myAirAsia[i]).AirplaneName();
+                           ((AirAsia)myAirAsia[i]).A_Code();
                         }
                         case 2 -> {
-                            myMas[i].AirplaneCode();
+                            ((Mas)myMas[i]).AirplaneName();
                         }
                         case 3 -> {
-                            myMalindo[i].AirplaneCode();
+                            ((Malindo)myMalindo[i]).AirplaneName();
                         }
                         default -> {
                         }
@@ -211,7 +213,32 @@ public class BookingMain {
                         } 
                         else{ 
                             ((Passenger)myPassenger[i]).getVaccine().DisplayVaccineType(((Passenger)myPassenger[i]).getVaccine().getVaccineType()); 
-                        } 
+                        }
+                        
+                        //CALCULATION
+                        //luggage price
+                        System.out.println("Total Luggage: "+((Passenger)myPassenger[i]).getLuggage());
+                        System.out.println("Luggage Price: "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
+                        
+                        System.out.println("Ticket Price: "+ ((Passenger)myPassenger[i]).getTicket().DestinationPrice(((Passenger)myPassenger[i]).getTicket().getDestination()));
+                        System.out.println("Travel Type Price: "+((Passenger)myPassenger[i]).getTicket().TravelPrice( ((Passenger)myPassenger[i]).getTicket().getTravelType(), ((Passenger)myPassenger[i]).getTicket().getDPrice()));
+                        
+                        switch (plane) {
+                        case 1 -> {
+                           System.out.println("Flight Ticket Price : "+((AirAsia)myAirAsia[i]).FCPrice((Passenger) myPassenger[i]));
+                           System.out.println("Total Ticket Price : "+((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i]));
+                        }
+                        case 2 -> {
+                            System.out.println("Flight Ticket Price : "+((Mas)myMas[i]).FCPrice((Passenger) myPassenger[i]));
+                            System.out.println("Total Ticket Price : "+((Mas)myMas[i]).TicketPrice((Passenger) myPassenger[i]));
+                        }
+                        case 3 -> {
+                            System.out.println("Flight Ticket Price : "+((Malindo)myMalindo[i]).FCPrice((Passenger) myPassenger[i]));
+                            System.out.println("Total Ticket Price : "+((Malindo)myMalindo[i]).TicketPrice((Passenger) myPassenger[i]));
+                        }
+                        default -> {
+                        }
+                    }
             } 
     }
 }

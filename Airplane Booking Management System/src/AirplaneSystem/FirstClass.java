@@ -20,6 +20,7 @@ public class FirstClass extends Ticket{
         System.out.println("Choose your seat 1 - 25: ");
     }
 
+
     /**
      * @return the seatNum
      */

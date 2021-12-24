@@ -8,24 +8,53 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class Mas extends Airplane{
+public class Mas extends Airplane implements AirplaneCode{
     private int AirplaneCode;
     
-    Mas(){
-        super();
+    Mas(int plane){
+        super(plane);
         AirplaneCode = 0;
     }
     
+    //abstract class
     @Override
-    public void AirplaneCode() {
-        System.out.println("Airplane Type: Mas");
-            
+    public float FCPrice(Passenger passenger) {
+        switch (passenger.getTicket().getFlightClass()) {
+            case 1 -> FCPrice = 100;
+            case 2 -> FCPrice = 60;
+            case 3 -> FCPrice = 55;
+            default -> {
+            }
+        }
+        
+        return FCPrice;
+    }
+
+    @Override
+    public float TicketPrice(Passenger passenger) {
+        total = passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
+                + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice;
+        return total;
+    }
+    
+    //Interface class 
+    @Override
+    public void AirplaneName() {
+        if(getPlane() == 2){
+            System.out.println("Airplane Type: Mas");
+        }
+    }
+    
+    @Override
+    public void A_Code() {
+        if(getPlane() == 2){
             if(getAirplaneCode() == 1){
                 System.out.println("Airplane Code: MAS55");
             }
             else{
                 System.out.println("Airplane Code: MAS78");
             }
+        }
     }
 
     /**
@@ -41,5 +70,4 @@ public class Mas extends Airplane{
     public void setAirplaneCode(int AirplaneCode) {
         this.AirplaneCode = AirplaneCode;
     }
-    
 }

@@ -43,6 +43,7 @@ public class BusinessClass extends Ticket{
       System.out.println(random_int);
     }
 
+
     /**
      * @return the seatNum
      */

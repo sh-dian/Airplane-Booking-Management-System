@@ -8,24 +8,53 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class Malindo extends Airplane{
-    private int AirplaneCode;
+public class Malindo extends Airplane implements AirplaneCode{
+    int AirplaneCode;
     
-    Malindo(){
-        super();
+    Malindo(int plane){
+        super(plane);
         AirplaneCode = 0;
     }
     
+    //abstract class
     @Override
-    public void AirplaneCode() {
-        System.out.println("Airplane Type: Malindo");
-            
+    public float FCPrice(Passenger passenger) {
+        switch (passenger.getTicket().getFlightClass()) {
+            case 1 -> FCPrice = 150;
+            case 2 -> FCPrice = 130;
+            case 3 -> FCPrice = 125;
+            default -> {
+            }
+        }
+        
+        return FCPrice;
+    }
+
+    @Override
+    public float TicketPrice(Passenger passenger) {
+        total = passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
+                + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice;
+        return total;
+    }
+    
+    //Interface class 
+    @Override
+    public void AirplaneName() {
+        if(getPlane() == 3){
+            System.out.println("Airplane Type: Malindo");
+        }
+    }
+    
+    @Override
+    public void A_Code() {
+        if(getPlane() == 3){
             if(getAirplaneCode() == 1){
-                System.out.println("Airplane Code: MAS78");
+                System.out.println("Airplane Code: MD460");
             }
             else{
                 System.out.println("Airplane Code: MD157");
             }
+        }
     }
 
     /**
@@ -41,5 +70,4 @@ public class Malindo extends Airplane{
     public void setAirplaneCode(int AirplaneCode) {
         this.AirplaneCode = AirplaneCode;
     }
-    
 }

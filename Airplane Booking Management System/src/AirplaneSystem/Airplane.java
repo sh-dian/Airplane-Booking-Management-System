@@ -9,5 +9,39 @@ package AirplaneSystem;
  * @author User
  */
 abstract public class Airplane {
-    abstract public void AirplaneCode();
+    public int plane;
+    public float FCPrice;
+    public float total;
+    Passenger passenger;
+    
+    Airplane(int plane){
+        this.plane = plane;
+        FCPrice = 0;
+        total = 0;
+        passenger = new Passenger();
+    }
+    
+    abstract public float FCPrice(Passenger passenger);
+    abstract public float TicketPrice(Passenger passenger);
+
+    /**
+     * @return the plane
+     */
+    public int getPlane() {
+        return plane;
+    }
+
+    /**
+     * @return the FCPrice
+     */
+    public float getFCPrice() {
+        return FCPrice;
+    }
+
+    /**
+     * @return the total
+     */
+    public float getTotal() {
+        return total;
+    }
 }

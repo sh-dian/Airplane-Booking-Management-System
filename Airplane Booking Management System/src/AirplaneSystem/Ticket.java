@@ -15,15 +15,20 @@ public class Ticket {
     protected String dateTravel;
     protected String dateReturn;
     
+    public float DPrice;
+    public float TVPrice;
+    
     Ticket(){
         destination = 0;
         travelType = 0;
         flightClass = 0;
         dateTravel = null;
         dateReturn = null;
+        DPrice = 0;
+        TVPrice = 0;
     }
     
-    void FlightDestination(int destination){
+    int FlightDestination(int destination){
         switch (getDestination()) {
             case 1 -> System.out.println("Destination: Kedah");
             case 2 -> System.out.println("Destination: Selangor");
@@ -31,18 +36,44 @@ public class Ticket {
             default -> {
             }
         }
+        
+        return destination;
     }
     
-    void Type(int travelType){
+    float DestinationPrice(int destination){
+        
+        switch (getDestination()) {
+            case 1 -> DPrice = 119;
+            case 2 -> DPrice = 129;
+            case 3 -> DPrice = 139;
+            default -> {
+            }
+        }
+        return DPrice;
+    }
+    
+    int Type(int travelType){
         if(getTravelType() == 1){
             System.out.println("Travel Type: One Way Trip");
         }
         else{
             System.out.println("Travel Type: Round Trip");
         }
+        
+        return travelType;
     }
     
-    void FClass(int flightClass){
+    float TravelPrice(int travelType, float DPrice){
+        if(getTravelType() == 1){
+            TVPrice = 0;
+        }
+        else{
+            TVPrice = DPrice;
+        }
+        return TVPrice;
+    }
+    
+    int FClass(int flightClass){
         switch (getFlightClass()) {
             case 1 -> System.out.println("Travel Type: Business Class");
             case 2 -> System.out.println("Travel Type: First Class");
@@ -50,6 +81,7 @@ public class Ticket {
             default -> {
             }
         }
+        return flightClass;
     }
     
     //overload method
@@ -130,6 +162,20 @@ public class Ticket {
      */
     public void setDateReturn(String dateReturn) {
         this.dateReturn = dateReturn;
+    }
+
+    /**
+     * @return the DPrice
+     */
+    public float getDPrice() {
+        return DPrice;
+    }
+
+    /**
+     * @return the TVPrice
+     */
+    public float getTVPrice() {
+        return TVPrice;
     }
     
 }
