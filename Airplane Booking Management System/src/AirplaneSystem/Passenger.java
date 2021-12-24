@@ -12,7 +12,7 @@ public class Passenger extends Person{
     private int luggage;
     private int okuDeclaration;
     private Vaccine vaccine;
-    private Ticket ticket;
+    private BookTicket ticket;
     
     public float LPrice;
     public float Discount;
@@ -23,7 +23,7 @@ public class Passenger extends Person{
         okuDeclaration = 0;
         LPrice = 0;
         vaccine = new Vaccine();
-        ticket = new Ticket();
+        ticket = new BookTicket();
     }
     
     float LuggagePrice(int luggage){
@@ -95,14 +95,14 @@ public class Passenger extends Person{
     /**
      * @return the ticket
      */
-    public Ticket getTicket() {
+    public BookTicket getTicket() {
         return ticket;
     }
 
     /**
      * @param ticket the ticket to set
      */
-    public void setTicket(Ticket ticket) {
+    public void setTicket(BookTicket ticket) {
         this.ticket = ticket;
     }
 

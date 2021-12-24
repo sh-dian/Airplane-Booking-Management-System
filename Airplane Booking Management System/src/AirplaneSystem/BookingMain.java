@@ -20,7 +20,7 @@ public class BookingMain {
          
         Person myPerson; 
          
-            /*//registration input 
+            //registration input 
             System.out.print("Name\t:"); 
             String name = input.nextLine();
              
@@ -37,7 +37,7 @@ public class BookingMain {
             System.out.print("Phone Number\t:"); 
             String phoneNum = input.next();
             
-            myPerson = new Person(name,email,icNum,phoneNum,age);*/
+            myPerson = new Person(name,email,icNum,phoneNum,age);
          
         
         System.out.print("Total Passenger\t?\t"); 
@@ -49,15 +49,17 @@ public class BookingMain {
         Airplane[] myMas = new Mas[totalPassenger];
         Airplane[] myMalindo = new Malindo[totalPassenger];
         
-        //Ticket[] First = new FirstClass[totalPassenger];
-        //Ticket[] BClass = new BusinessClass[totalPassenger];
+        BookTicket[] First = new FirstClass[totalPassenger];
+        BookTicket[] BClass = new BusinessClass[totalPassenger];
+        BookTicket[] EClass = new EconomyClass[totalPassenger];
         
         int plane = 0;
          
         for(int i =0; i < totalPassenger; i++){
             myPassenger[i] = new Passenger();
-            //First[i] = new FirstClass();
-            //BClass[i] = new BusinessClass();
+            First[i] = new FirstClass();
+            BClass[i] = new BusinessClass();
+            EClass[i] = new EconomyClass();
             
             //passenger detail 
             System.out.println("Passenger "+(i+1)); 
@@ -91,14 +93,23 @@ public class BookingMain {
                 ((Passenger)myPassenger[i]).getTicket().setFlightClass(input.nextInt());
                 input.nextLine(); 
                 
-                /*//Flight class
-                if(((Passenger)myPassenger[i]).getTicket().getFlightClass() == 2){
-                    ((FirstClass)First[i]).Seat();
+            //Flight class - seat number
+            switch (((Passenger)myPassenger[i]).getTicket().getFlightClass()) {
+                case 1 -> {
+                    System.out.println("Choose seat num 1 - 100: ");
+                    ((BusinessClass)BClass[i]).setSeatNum(input.nextInt());
+                }
+                case 2 -> {
+                    System.out.println("Choose seat num 1 - 40: ");
                     ((FirstClass)First[i]).setSeatNum(input.nextInt());
                 }
-                else{
-                    ((BusinessClass)BClass[i]).Random();
-                }*/
+                case 3 -> {
+                    System.out.println("Thankyou for Choosing Economy Class! Your seat will be pick Randomly");
+                    ((EconomyClass)EClass[i]).Random();
+                }
+                default -> {
+                }
+            }
                 
                     //date travel
                     if(((Passenger)myPassenger[i]).getTicket().getTravelType() == 1){
@@ -180,8 +191,14 @@ public class BookingMain {
                     ((Passenger)myPassenger[i]).getTicket().FClass(((Passenger)myPassenger[i]).getTicket().getFlightClass());
                     ((Passenger)myPassenger[i]).getTicket().Type(((Passenger)myPassenger[i]).getTicket().getTravelType());
                     
-                    /*//flight class
-                    ((BusinessClass)BClass[i]).Seat();*/
+                    //flight class
+                    switch (((Passenger)myPassenger[i]).getTicket().getFlightClass()) {
+                        case 1 -> System.out.println("Seat Num: "+ ((BusinessClass)BClass[i]).getSeatNum());
+                        case 2 -> System.out.println("Seat Num: "+((FirstClass)First[i]).getSeatNum());
+                        case 3 -> System.out.println("Seat Num: "+ ((EconomyClass)EClass[i]).getSeatNum());
+                        default -> {
+                }
+                    }
                     
                     //plane
                     switch (plane) {

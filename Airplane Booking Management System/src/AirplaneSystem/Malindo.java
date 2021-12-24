@@ -8,7 +8,7 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class Malindo extends Airplane implements AirplaneCode{
+public class Malindo extends Airplane implements AirplaneTicketPrice{
     int AirplaneCode;
     
     Malindo(int plane){
@@ -32,8 +32,12 @@ public class Malindo extends Airplane implements AirplaneCode{
 
     @Override
     public float TicketPrice(Passenger passenger) {
-        total = passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
-                + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice;
+        float price = 0;
+        
+        price = (passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
+                + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice);
+        
+        total = price - (price * (passenger.Discount(passenger.getP_Age(), passenger.getOkuDeclaration())));
         return total;
     }
     

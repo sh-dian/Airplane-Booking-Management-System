@@ -8,7 +8,7 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class AirAsia extends Airplane implements AirplaneCode{
+public class AirAsia extends Airplane implements AirplaneTicketPrice{
     private int AirplaneCode;
     
     AirAsia(int plane){
@@ -32,7 +32,7 @@ public class AirAsia extends Airplane implements AirplaneCode{
 
     @Override
     public float TicketPrice(Passenger passenger) {
-        float price = 0;
+        float price;
         
         price = (passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
                 + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice);

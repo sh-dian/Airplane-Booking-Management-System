@@ -8,7 +8,7 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class Ticket {
+public class BookTicket {
     protected int destination;
     protected int travelType;
     protected int flightClass;
@@ -18,7 +18,7 @@ public class Ticket {
     public float DPrice;
     public float TVPrice;
     
-    Ticket(){
+    BookTicket(){
         destination = 0;
         travelType = 0;
         flightClass = 0;

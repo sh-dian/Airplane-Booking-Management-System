@@ -8,26 +8,32 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class EconomyClass extends Ticket{
-    private int seatNum;
+public class EconomyClass extends BookTicket{
+    public int min;
+    public int max;
+    public int seatNum;
     
     EconomyClass(){
         super();
         seatNum = 0;
+        min = 1;
+        max = 100;
     }
-
+        
+    //flight seat 1 - 100 
+    
+    int Random(){
+            //Generate random int value from 1 to 50 
+            seatNum = (int)Math.floor(Math.random()*(max-min+1)+min);
+            
+            return getSeatNum();
+        
+    }
 
     /**
      * @return the seatNum
      */
     public int getSeatNum() {
         return seatNum;
-    }
-
-    /**
-     * @param seatNum the seatNum to set
-     */
-    public void setSeatNum(int seatNum) {
-        this.seatNum = seatNum;
     }
 }

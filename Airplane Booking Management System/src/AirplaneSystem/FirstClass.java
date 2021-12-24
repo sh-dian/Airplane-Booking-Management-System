@@ -8,7 +8,7 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class FirstClass extends Ticket{
+public class FirstClass extends BookTicket{
     private int seatNum;
     
     FirstClass(){
@@ -16,11 +16,6 @@ public class FirstClass extends Ticket{
         seatNum = 0;
     }
     
-    void Seat(){
-        System.out.println("Choose your seat 1 - 25: ");
-    }
-
-
     /**
      * @return the seatNum
      */
