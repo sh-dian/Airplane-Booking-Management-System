@@ -12,7 +12,7 @@ abstract public class Airplane {
     public int plane;
     public float FCPrice;
     public float total;
-    Passenger passenger;
+    public Passenger passenger;
     
     Airplane(int plane){
         this.plane = plane;

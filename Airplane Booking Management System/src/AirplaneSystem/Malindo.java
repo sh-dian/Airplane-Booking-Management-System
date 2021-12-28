@@ -8,8 +8,8 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class Malindo extends Airplane implements AirplaneTicketPrice{
-    int AirplaneCode;
+public class Malindo extends Airplane implements AirplaneDetail{
+    private int AirplaneCode;
     
     Malindo(int plane){
         super(plane);
@@ -32,7 +32,7 @@ public class Malindo extends Airplane implements AirplaneTicketPrice{
 
     @Override
     public float TicketPrice(Passenger passenger) {
-        float price = 0;
+        float price;
         
         price = (passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
                 + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice);
@@ -50,7 +50,7 @@ public class Malindo extends Airplane implements AirplaneTicketPrice{
     }
     
     @Override
-    public void A_Code() {
+    public void AirplaneCode() {
         if(getPlane() == 3){
             if(getAirplaneCode() == 1){
                 System.out.println("Airplane Code: MD460");

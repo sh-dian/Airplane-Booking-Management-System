@@ -8,7 +8,7 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class Mas extends Airplane implements AirplaneTicketPrice{
+public class Mas extends Airplane implements AirplaneDetail{
     private int AirplaneCode;
     
     Mas(int plane){
@@ -50,7 +50,7 @@ public class Mas extends Airplane implements AirplaneTicketPrice{
     }
     
     @Override
-    public void A_Code() {
+    public void AirplaneCode() {
         if(getPlane() == 2){
             if(getAirplaneCode() == 1){
                 System.out.println("Airplane Code: MAS55");

@@ -11,7 +11,7 @@ package AirplaneSystem;
 public class EconomyClass extends BookTicket{
     public int min;
     public int max;
-    public int seatNum;
+    private int seatNum;
     
     EconomyClass(){
         super();
@@ -22,12 +22,11 @@ public class EconomyClass extends BookTicket{
         
     //flight seat 1 - 100 
     
-    int Random(){
+    public int Random(){
             //Generate random int value from 1 to 50 
             seatNum = (int)Math.floor(Math.random()*(max-min+1)+min);
             
             return getSeatNum();
-        
     }
 
     /**

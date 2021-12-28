@@ -8,8 +8,8 @@ package AirplaneSystem;
  *
  * @author User
  */
-public interface AirplaneTicketPrice {
+public interface AirplaneDetail {
     
     abstract public void AirplaneName();
-    abstract public void A_Code();
+    abstract public void AirplaneCode();
 }

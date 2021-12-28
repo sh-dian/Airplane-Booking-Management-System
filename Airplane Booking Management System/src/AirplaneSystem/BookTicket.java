@@ -16,7 +16,7 @@ public class BookTicket {
     protected String dateReturn;
     
     public float DPrice;
-    public float TVPrice;
+    public float TravelPrice;
     
     BookTicket(){
         destination = 0;
@@ -25,7 +25,7 @@ public class BookTicket {
         dateTravel = null;
         dateReturn = null;
         DPrice = 0;
-        TVPrice = 0;
+        TravelPrice = 0;
     }
     
     int FlightDestination(int destination){
@@ -65,12 +65,12 @@ public class BookTicket {
     
     float TravelPrice(int travelType, float DPrice){
         if(getTravelType() == 1){
-            TVPrice = 0;
+            TravelPrice = 0;
         }
         else{
-            TVPrice = DPrice;
+            TravelPrice = DPrice;
         }
-        return TVPrice;
+        return TravelPrice;
     }
     
     int FClass(int flightClass){
@@ -174,8 +174,8 @@ public class BookTicket {
     /**
      * @return the TVPrice
      */
-    public float getTVPrice() {
-        return TVPrice;
+    public float getTravelPrice() {
+        return TravelPrice;
     }
     
 }

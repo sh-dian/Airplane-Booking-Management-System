@@ -8,7 +8,7 @@ package AirplaneSystem;
  *
  * @author User
  */
-public class AirAsia extends Airplane implements AirplaneTicketPrice{
+public class AirAsia extends Airplane implements AirplaneDetail{
     private int AirplaneCode;
     
     AirAsia(int plane){
@@ -50,7 +50,7 @@ public class AirAsia extends Airplane implements AirplaneTicketPrice{
     }
     
     @Override
-    public void A_Code() {
+    public void AirplaneCode() {
         if(getPlane() == 1){
             if(getAirplaneCode() == 1){
                 System.out.println("Airplane Code: AA052");
