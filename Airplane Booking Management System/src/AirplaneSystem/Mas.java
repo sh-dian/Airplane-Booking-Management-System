@@ -32,13 +32,19 @@ public class Mas extends Airplane implements AirplaneDetail{
 
     @Override
     public float TicketPrice(Passenger passenger) {
-        float price = 0;
         
-        price = (passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
+        total = (passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
                 + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice);
         
-        total = price - (price * (passenger.Discount(passenger.getP_Age(), passenger.getOkuDeclaration())));
         return total;
+    }
+    
+    
+    @Override
+    public float Discount(Passenger passenger) {
+        disc = total * passenger.Discount(passenger.getP_Age(), passenger.getOkuDeclaration());
+        
+        return disc;
     }
     
     //Interface class 

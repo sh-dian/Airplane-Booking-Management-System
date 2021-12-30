@@ -31,21 +31,38 @@ public class Passenger extends Person{
     }
     
     float Discount(int P_Age, int okuDeclaration){
-        float discP = 0;
+        float discP;
         
         if(getP_Age() <=12){
             discP = (float) 0.10;
-        }
-        else if(getP_Age() >=60){
-            discP = (float) 0.15;
-        }
-        
-            if(getOkuDeclaration() == 1){
+            
+            if(getOkuDeclaration() != 2){
                 Discount = (float) (discP + 0.20);
             }
             else{
                 Discount = discP;
             }
+        }
+        else if(getP_Age() >=60){
+            discP = (float) 0.15;
+            
+            if(getOkuDeclaration() != 2){
+                Discount = (float) (discP + 0.20);
+            }
+            else{
+                Discount = discP;
+            }
+        }
+        else if(getP_Age() > 12 && getP_Age() < 60){
+            discP = 0;
+            
+            if(getOkuDeclaration() != 2){
+                Discount = (float) (discP + 0.20);
+            }
+            else{
+                Discount = discP;
+            }
+        }
         
         return Discount;
     }
