@@ -50,6 +50,23 @@ public class Passenger extends Person{
         return Discount;
     }
     
+    int AreOku(int okuDeclaration){
+        if(getOkuDeclaration() == 1){
+            System.out.println("OKU: Yes");
+        }
+        else if(getOkuDeclaration() == 2){
+            System.out.println("OKU: No");
+        }
+        
+        return okuDeclaration;
+    }
+    
+    void VaccineDate(){
+        System.out.println("First Dose Date: "+vaccine.getFirstDose_Date());
+        System.out.println("Second Dose Date: "+vaccine.getSecondDose_Date());
+        System.out.println("Covid-19 Result: "+vaccine.getCovid19_Result());
+    }
+    
     /**
      * @return the luggage
      */

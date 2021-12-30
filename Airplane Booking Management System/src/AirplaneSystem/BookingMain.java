@@ -86,6 +86,8 @@ public class BookingMain {
                 input.nextLine(); 
 
             System.out.println("-----------------------------------------------------------------------------------------------------");
+            System.out.println("[1]Kedah [2]Selangor [3]Penang [4]Perak [5]Pahang\n[6]Johor [7]Melaka [8]Kelantan/Terengganu [9]Sarawak [10]Sabah");
+            System.out.println("-----------------------------------------------------------------------------------------------------");
             
             //flight trip
             System.out.print("Destination: ");
@@ -150,7 +152,6 @@ public class BookingMain {
                     case 3 -> {
                         System.out.println("Thankyou for Choosing Economy Class! Your seat will be pick Randomly");
                         ((EconomyClass)EClass[i]).Random();
-                        input.nextLine(); 
                     }
                     default -> {
                     }
@@ -170,7 +171,7 @@ public class BookingMain {
                 }
 
                     //luggage
-                    System.out.print("Total Luggage: ");
+                    System.out.print("Total Luggage [Max 3]: ");
                     ((Passenger)myPassenger[i]).setLuggage(input.nextInt());
                     input.nextLine();
 
@@ -178,7 +179,14 @@ public class BookingMain {
                     System.out.print("OKU 1-yes, 2-no? ");
                     ((Passenger)myPassenger[i]).setOkuDeclaration(input.nextInt());
                     input.nextLine(); 
-
+                        
+                    switch (plane) {
+                    case 1 -> FCPrice[i] = ((AirAsia)myAirAsia[i]).FCPrice((Passenger) myPassenger[i]);
+                    case 2 -> FCPrice[i] = ((Mas)myMas[i]).FCPrice((Passenger) myPassenger[i]);
+                    case 3 -> FCPrice[i] = ((Malindo)myMalindo[i]).FCPrice((Passenger) myPassenger[i]);
+                    default -> {
+                    }
+                }
                         //Vaccine detail 
                         System.out.print("Vaccinated [1]Yes [2]No\t? "); 
                         ((Passenger)myPassenger[i]).getVaccine().setVaccineDeclaration(input.nextInt()); 
@@ -214,6 +222,7 @@ public class BookingMain {
                 System.out.println("====================================================================================================");
                 System.out.println("\t\t\t-BOOKING-");
                 
+                float totalAmount = 0;
                 //output 
                 for(int i =0; i < totalPassenger; i++){ 
                     //passenger detail 
@@ -266,42 +275,50 @@ public class BookingMain {
                         }
                         
                         System.out.println("Total Luggage: "+((Passenger)myPassenger[i]).getLuggage());
+                        ((Passenger)myPassenger[i]).AreOku(((Passenger)myPassenger[i]).getOkuDeclaration());
 
                             //vaccine
                             if(((Passenger)myPassenger[i]).getVaccine().getVaccineDeclaration() != 1){ 
                                 System.out.println("YOUR BOOKING IS CANCELLED!!"); 
                             } 
                             else{ 
-                                ((Passenger)myPassenger[i]).getVaccine().DisplayVaccineType(((Passenger)myPassenger[i]).getVaccine().getVaccineType()); 
+                                ((Passenger)myPassenger[i]).getVaccine().DisplayVaccineType(((Passenger)myPassenger[i]).getVaccine().getVaccineType());
+                                ((Passenger)myPassenger[i]).VaccineDate();
                             }
 
                             //CALCULATION
                             //luggage price
-                            System.out.println("Ticket Price: "+ ((Passenger)myPassenger[i]).getTicket().DestinationPrice(((Passenger)myPassenger[i]).getTicket().getDestination()));
-                            System.out.println("Travel Type Price: "+((Passenger)myPassenger[i]).getTicket().TravelPrice( ((Passenger)myPassenger[i]).getTicket().getTravelType(), ((Passenger)myPassenger[i]).getTicket().getDPrice()));
+                            System.out.println("Ticket Price: RM "+ ((Passenger)myPassenger[i]).getTicket().DestinationPrice(((Passenger)myPassenger[i]).getTicket().getDestination()));
+                            System.out.println("Travel Type Price: RM "+((Passenger)myPassenger[i]).getTicket().TravelPrice( ((Passenger)myPassenger[i]).getTicket().getTravelType(), ((Passenger)myPassenger[i]).getTicket().getDPrice()));
 
                             switch (plane) {
                             case 1 -> {
-                               System.out.println("Flight Ticket Price : "+FCPrice[i]);
-                               System.out.println("Luggage Price: "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
-                               System.out.println("Total Ticket Price : "+((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i]));
+                               System.out.println("Flight Class Price : RM "+FCPrice[i]);
+                               System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
+                               System.out.println("Total Ticket Price : RM "+((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i]));
                             }
                             case 2 -> {
-                                System.out.println("Flight Ticket Price : "+FCPrice[i]);
-                                System.out.println("Luggage Price: "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
-                                System.out.println("Total Ticket Price : "+((Mas)myMas[i]).TicketPrice((Passenger) myPassenger[i]));
+                                System.out.println("Flight Class Price : RM "+FCPrice[i]);
+                                System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
+                                System.out.println("Total Ticket Price : RM "+((Mas)myMas[i]).TicketPrice((Passenger) myPassenger[i]));
                             }
                             case 3 -> {
-                                System.out.println("Flight Ticket Price : "+FCPrice[i]);
-                                System.out.println("Luggage Price: "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
-                                System.out.println("Total Ticket Price : "+((Malindo)myMalindo[i]).TicketPrice((Passenger) myPassenger[i]));
+                                System.out.println("Flight Class Price : RM "+FCPrice[i]);
+                                System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
+                                System.out.println("Total Ticket Price : RM "+((Malindo)myMalindo[i]).TicketPrice((Passenger) myPassenger[i]));
                             }
                             default -> {
                             }
                         }
                         System.out.println("-----------------------------------------------------------------------------------------------------");
+                        
+                        totalAmount = totalAmount + ((AirAsia)myAirAsia[i]).getTotal() + ((Mas)myMas[i]).getTotal() + ((Malindo)myMalindo[i]).getTotal();
                 } 
                 
+                System.out.println("====================================================================================================");
+                for(int i =0; i < totalPassenger; i++){ 
+                    System.out.println("Total Amount: RM "+totalAmount);
+                }
                 System.out.println("====================================================================================================");
                 System.out.println("Thankyou!");
                 System.out.println("====================================================================================================");

@@ -33,6 +33,13 @@ public class BookTicket {
             case 1 -> System.out.println("Destination: Kedah");
             case 2 -> System.out.println("Destination: Selangor");
             case 3 -> System.out.println("Destination: Penang");
+            case 4 -> System.out.println("Destination: Perak");
+            case 5 -> System.out.println("Destination: Pahang");
+            case 6 -> System.out.println("Destination: Johor");
+            case 7 -> System.out.println("Destination: Melaka");
+            case 8 -> System.out.println("Destination: Kelantan/Terengganu");
+            case 9 -> System.out.println("Destination: Sarawak");
+            case 10 -> System.out.println("Destination: Sabah");
             default -> {
             }
         }
@@ -46,6 +53,13 @@ public class BookTicket {
             case 1 -> DPrice = 119;
             case 2 -> DPrice = 129;
             case 3 -> DPrice = 139;
+            case 4 -> DPrice = 159;
+            case 5 -> DPrice = 189;
+            case 6 -> DPrice = 169;
+            case 7 -> DPrice = 179;
+            case 8 -> DPrice = 149;
+            case 9 -> DPrice = 220;
+            case 10 -> DPrice = 250;
             default -> {
             }
         }
