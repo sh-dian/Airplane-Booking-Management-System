@@ -72,6 +72,7 @@ public class BookingMain {
             float[] FCPrice = new float[totalPassenger];
             float[] TPrice = new float[totalPassenger];
             float[] AmountPrice = new float[totalPassenger];
+            float[] Discount = new float[totalPassenger];
 
             for(int i =0; i < totalPassenger; i++){
                 myPassenger[i] = new Passenger();
@@ -185,16 +186,19 @@ public class BookingMain {
                         FCPrice[i] = ((AirAsia)myAirAsia[i]).FCPrice((Passenger) myPassenger[i]);
                         TPrice[i] = ((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i]);
                         AmountPrice[i] = ((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i]) - ((AirAsia)myAirAsia[i]).Discount((Passenger) myPassenger[i]);
+                        Discount[i] = ((AirAsia)myAirAsia[i]).Discount((Passenger) myPassenger[i]);
                     }
                     case 2 ->{
                         FCPrice[i] = ((Mas)myMas[i]).FCPrice((Passenger) myPassenger[i]);
                         TPrice[i] = ((Mas)myMas[i]).TicketPrice((Passenger) myPassenger[i]);
                         AmountPrice[i] = ((Mas)myMas[i]).TicketPrice((Passenger) myPassenger[i]) - ((Mas)myMas[i]).Discount((Passenger) myPassenger[i]);
+                        Discount[i] = ((Mas)myMas[i]).Discount((Passenger) myPassenger[i]);
                     }
                     case 3 ->{
                         FCPrice[i] = ((Malindo)myMalindo[i]).FCPrice((Passenger) myPassenger[i]);
                         TPrice[i] = ((Malindo)myMalindo[i]).TicketPrice((Passenger) myPassenger[i]);
                         AmountPrice[i] = ((Malindo)myMalindo[i]).TicketPrice((Passenger) myPassenger[i]) - ((Malindo)myMalindo[i]).Discount((Passenger) myPassenger[i]);
+                        Discount[i] = ((Malindo)myMalindo[i]).Discount((Passenger) myPassenger[i]);
                     }
                     default -> {
                     }
@@ -308,22 +312,22 @@ public class BookingMain {
                                System.out.println("Flight Class Price : RM "+FCPrice[i]);
                                System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
                                System.out.println("Total Ticket Price : RM "+  TPrice[i]);
-                               System.out.println("Discount: RM "+ ((AirAsia)myAirAsia[i]).Discount((Passenger) myPassenger[i]));
+                               System.out.println("Discount: RM " + Discount[i]);
                                System.out.println("Total Price Passenger "+(i+1)+" : RM "+ AmountPrice[i]);
                             }
                             case 2 -> {
                                 System.out.println("Flight Class Price : RM "+FCPrice[i]);
                                 System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
                                 System.out.println("Total Ticket Price : RM "+  TPrice[i]);
-                                System.out.println("Discount: RM "+ ((Mas)myMas[i]).Discount((Passenger) myPassenger[i]));
+                                System.out.println("Discount: RM " + Discount[i]);
                                 System.out.println("Total Price Passenger "+(i+1)+" : RM "+ AmountPrice[i]);
                             }
                             case 3 -> {
                                 System.out.println("Flight Class Price : RM "+FCPrice[i]);
                                 System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
                                 System.out.println("Total Ticket Price : RM "+  TPrice[i]);
-                                System.out.println("Discount: RM "+ ((Malindo)myMalindo[i]).Discount((Passenger) myPassenger[i]));
-                               System.out.println("Total Price Passenger "+(i+1)+" : RM "+ AmountPrice[i]);
+                                System.out.println("Discount: RM " + Discount[i]);
+                                System.out.println("Total Price Passenger "+(i+1)+" : RM "+ AmountPrice[i]);
                             }
                             default -> {
                             }
