@@ -12,8 +12,25 @@ package AirplaneSystem;
  * 4. WAN MUHAMMAD DZULKHAIRIE BIN WAN ZAHARI (CB20096)
  * 5. HANIS SYAFIQA BT KHAIRIL AZLI (CB20106)
  */ 
-public interface AirplaneDetail {
+public class FirstClass extends BookTicket{
+    private int seatNum;
     
-    abstract public String AirplaneName();
-    abstract public String AirplaneCode();
+    FirstClass(){
+        super();
+        seatNum = 0;
+    }
+    
+    /**
+     * @return the seatNum
+     */
+    public int getSeatNum() {
+        return seatNum;
+    }
+
+    /**
+     * @param seatNum the seatNum to set
+     */
+    public void setSeatNum(int seatNum) {
+        this.seatNum = seatNum;
+    }
 }

@@ -13,6 +13,7 @@ package AirplaneSystem;
  * 5. HANIS SYAFIQA BT KHAIRIL AZLI (CB20106)
  */ 
 import java.util.Scanner; 
+
 public class BookingMain { 
  
     /** 
@@ -20,44 +21,65 @@ public class BookingMain {
      */ 
     public static void main(String[] args) { 
         // TODO code application logic here 
-        Scanner input = new Scanner (System.in); 
+        Scanner input = new Scanner (System.in);
          
         Person myPerson; 
         
-        System.out.println("====================================================================================================");
+        System.out.println("========================================================================================");
         System.out.println("\tKUALA LUMPUR INTERNATIONAL AIRPORT BOOKING SYSTEM");
-        System.out.println("====================================================================================================");
+        System.out.println("========================================================================================");
         System.out.println("\t\t\t\tWelcome!");
-        System.out.println("====================================================================================================");
-        System.out.println("\t\t\t-REGISTRATION-");
-         
-            //registration input 
-            System.out.print("Name\t:"); 
-            String name = input.nextLine();
-             
-            System.out.print("Age\t:"); 
-            int age = input.nextInt();
-            input.nextLine(); 
-             
-            System.out.print("Email\t:"); 
-            String email = input.next();
-             
-            System.out.print("IC Number\t:"); 
-            String icNum = input.next();
-             
-            System.out.print("Phone Number\t:"); 
-            String phoneNum = input.next();
+        System.out.println("========================================================================================");
+        
+        System.out.print("[1]Registration [2]Login : ");
+        int x = input.nextInt();
+        input.nextLine();
+        
+            if(x == 1){
+                System.out.println("\t\t\t-REGISTRATION-");
+
+                    //registration input 
+                    System.out.print("Name\t:"); 
+                    String name = input.nextLine();
+
+                    System.out.print("Age\t:"); 
+                    int age = input.nextInt();
+                    input.nextLine(); 
+
+                    System.out.print("Email\t:"); 
+                    String email = input.next();
+
+                    System.out.print("IC Number\t:"); 
+                    String icNum = input.next();
+
+                    System.out.print("Phone Number\t:"); 
+                    String phoneNum = input.next();
+
+                    System.out.print("Password\t:"); 
+                    String password = input.next();
+
+                    myPerson = new Person(name,email,icNum,phoneNum,age,password);
+            }
+            else{
+                System.out.println("\t\t\t-LOGIN-");
+
+                System.out.print("Email\t:"); 
+                String email = input.next();
+
+                System.out.print("Password\t:"); 
+                String password = input.next();
+
+                myPerson = new Person(email,password);
+            }
             
-            myPerson = new Person(name,email,icNum,phoneNum,age);
-            
-        System.out.println("====================================================================================================");
+        System.out.println("========================================================================================");
         System.out.println("\t\t\t-BOOKING-");
         
             System.out.print("Total Passenger\t?\t"); 
             int totalPassenger = input.nextInt(); 
             input.nextLine(); 
 
-        System.out.println("-----------------------------------------------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------------------------------------");
 
             Person[] myPassenger = new Passenger[totalPassenger];
             Airplane[] myAirAsia = new AirAsia[totalPassenger];
@@ -68,7 +90,7 @@ public class BookingMain {
             BookTicket[] BClass = new BusinessClass[totalPassenger];
             BookTicket[] EClass = new EconomyClass[totalPassenger];
 
-            int plane = 0;
+            int[] plane = new int[totalPassenger];
             float[] FCPrice = new float[totalPassenger];
             float[] TPrice = new float[totalPassenger];
             float[] AmountPrice = new float[totalPassenger];
@@ -83,7 +105,7 @@ public class BookingMain {
                 //passenger detail 
                 System.out.println("Passenger "+(i+1)); 
 
-            System.out.println("-----------------------------------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------");
 
                 System.out.print("Name\t?"); 
                 myPassenger[i].setP_Name(input.nextLine()); 
@@ -92,9 +114,9 @@ public class BookingMain {
                 myPassenger[i].setP_Age(input.nextInt()); 
                 input.nextLine(); 
 
-            System.out.println("-----------------------------------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------");
             System.out.println("[1]Kedah [2]Selangor [3]Penang [4]Perak [5]Pahang\n[6]Johor [7]Melaka [8]Kelantan/Terengganu [9]Sarawak [10]Sabah");
-            System.out.println("-----------------------------------------------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------");
             
             //flight trip
             System.out.print("Destination: ");
@@ -107,14 +129,14 @@ public class BookingMain {
 
                 //Airplane
                 System.out.print("Airplane Type, [1]AirAsia, [2]Mas, [3]Malindo: ");
-                plane = input.nextInt();
+                plane[i] = input.nextInt();
                 input.nextLine();
 
-                myAirAsia[i] = new AirAsia(plane);
-                myMas[i] = new Mas(plane);
-                myMalindo[i] = new Malindo(plane);
+                myAirAsia[i] = new AirAsia(plane[i]);
+                myMas[i] = new Mas(plane[i]);
+                myMalindo[i] = new Malindo(plane[i]);
 
-                switch (plane) {
+                switch (plane[i]) {
                     case 1 -> {
                         System.out.print("Airplane Code ([1]AA052 / [2]AA889) : ");
                         ((AirAsia)myAirAsia[i]).setAirplaneCode(input.nextInt());
@@ -181,7 +203,7 @@ public class BookingMain {
                     ((Passenger)myPassenger[i]).setOkuDeclaration(input.nextInt());
                     input.nextLine(); 
                         
-                    switch (plane) {
+                    switch (plane[i]) {
                     case 1 ->{
                         FCPrice[i] = ((AirAsia)myAirAsia[i]).FCPrice((Passenger) myPassenger[i]);
                         TPrice[i] = ((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i]);
@@ -228,26 +250,146 @@ public class BookingMain {
                                 break; 
                             }
                             
-                System.out.println("-----------------------------------------------------------------------------------------------------");
+                System.out.println("----------------------------------------------------------------------------------------");
             } 
             
-            System.out.println("====================================================================================================");
+            //Design Pattern
+            /*
+                //declare factory obj
+                AirplaneFactory factoryObj = new AirplaneFactory();
+                
+                for(int i =0; i < totalPassenger; i++)
+                {
+                    AirplaneDetail obj = factoryObj.getAirplaneDetail(plane[i]);
+                    Airplane obj2 = factoryObj.getAirplane(plane[i]);
+
+                    if(obj != null){
+                        System.out.println("Airplane Type: "+obj.AirplaneName());
+                        System.out.println("Airplane Code: "+obj.AirplaneCode());
+                        System.out.println("Flight Class Price: "+obj2.FCPrice((Passenger) myPassenger[i]));
+                        System.out.println("Total Ticket Price: "+obj2.TicketPrice((Passenger) myPassenger[i]));
+                        System.out.println("Discount : "+obj2.Discount((Passenger) myPassenger[i]));
+                    }
+                }*/
             
-            System.out.println("\nOUTPUT");
-                System.out.println("\n====================================================================================================");
+            /*
+            AirplaneFactory factoryObj = new AirplaneFactory();   
+            
+            float totalAmount = 0;
+            System.out.println("========================================================================================");
+
+            System.out.println("\nDESIGN PATTERN OUTPUT");
+                System.out.println("\n========================================================================================\n");
                 System.out.println("\tKUALA LUMPUR INTERNATIONAL AIRPORT BOOKING SYSTEM");
-                System.out.println("====================================================================================================");
+                System.out.println("========================================================================================");
                 System.out.println("\t\t\tThankyou for purchasing with us!");
-                System.out.println("====================================================================================================");
+                System.out.println("========================================================================================");
                 System.out.println("\t\t\t-BOOKING-");
                 
+                  for(int i =0; i < totalPassenger; i++){
+                        System.out.println("----------------------------------------------------------------------------------------");
+                        System.out.println("Passenger "+(i+1)); 
+                        System.out.println("----------------------------------------------------------------------------------------");
+
+                        System.out.println("Name\t:"+myPassenger[i].getP_Name());
+
+                        //flight trip
+                        System.out.println("Destination : "+
+                        ((Passenger)myPassenger[i]).getTicket().FlightDestination(((Passenger)myPassenger[i]).getTicket().getDestination()));
+                        
+                        System.out.println("Travel Type : "+
+                        ((Passenger)myPassenger[i]).getTicket().Type(((Passenger)myPassenger[i]).getTicket().getTravelType()));
+                        
+                            //Airplane
+                            AirplaneDetail obj = factoryObj.getAirplaneDetail(plane[i]);
+
+                            if(obj != null){
+                                System.out.println("Airplane Type: "+obj.AirplaneName());
+                                System.out.println("Airplane Code: "+obj.AirplaneCode());
+                            }
+                        
+                        //Flight Class, Flight Seat
+                        System.out.println("Flight Class : "+
+                        ((Passenger)myPassenger[i]).getTicket().FClass(((Passenger)myPassenger[i]).getTicket().getFlightClass()));
+                        
+                        switch (((Passenger)myPassenger[i]).getTicket().getFlightClass()) {
+                            case 1 -> System.out.println("Seat Num: "+ ((BusinessClass)BClass[i]).getSeatNum());
+                            case 2 -> System.out.println("Seat Num: "+((FirstClass)First[i]).getSeatNum());
+                            case 3 -> System.out.println("Seat Num: "+ ((EconomyClass)EClass[i]).getSeatNum());
+                            default -> {
+                            }
+                        }
+                        
+                        //date travel
+                        if(((Passenger)myPassenger[i]).getTicket().getTravelType() == 1){
+                            ((Passenger)myPassenger[i]).getTicket().FlightDate1(((Passenger)myPassenger[i]).getTicket().getDateTravel());
+                        }
+                        else{
+                            ((Passenger)myPassenger[i]).getTicket().FlightDate2(((Passenger)myPassenger[i]).getTicket().getDateTravel(), ((Passenger)myPassenger[i]).getTicket().getDateReturn());
+                        }
+                            
+                            //Luggage, Passenger declaration
+                            System.out.println("Total Luggage : "+((Passenger)myPassenger[i]).getLuggage());
+                            System.out.println("OKU : " +
+                            ((Passenger)myPassenger[i]).AreOku(((Passenger)myPassenger[i]).getOkuDeclaration()));
+                            
+                            //vaccine
+                            if(((Passenger)myPassenger[i]).getVaccine().getVaccineDeclaration() != 1){ 
+                                System.out.println("YOUR BOOKING IS CANCELLED!!"); 
+                                break;
+                            } 
+                            else{ 
+                                System.out.println("Vaccine : " +
+                                ((Passenger)myPassenger[i]).getVaccine().DisplayVaccineType(((Passenger)myPassenger[i]).getVaccine().getVaccineType()));
+                                
+                                ((Passenger)myPassenger[i]).VaccineDate();
+                            }
+                            
+                                //Price
+                                
+                                System.out.println("Ticket Price: RM "+ ((Passenger)myPassenger[i]).getTicket().DestinationPrice(((Passenger)myPassenger[i]).getTicket().getDestination()));
+                                System.out.println("Travel Type Price: RM "+((Passenger)myPassenger[i]).getTicket().TravelPrice( ((Passenger)myPassenger[i]).getTicket().getTravelType(), ((Passenger)myPassenger[i]).getTicket().getDPrice()));
+
+                                Airplane obj2 = factoryObj.getAirplane(plane[i]);
+
+                                if(obj != null){
+                                    System.out.println("Flight Class Price: "+obj2.FCPrice((Passenger) myPassenger[i]));
+                                }
+                                
+                                switch (plane[i]) {
+                                    case 1 ->System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
+                                    case 2 ->System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
+                                    case 3 ->System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
+                                    default -> {
+                                    }
+                                }
+                                
+                                if(obj != null){
+                                    System.out.println("Total Ticket Price: "+obj2.TicketPrice((Passenger) myPassenger[i]));
+                                    System.out.println("Discount : "+obj2.Discount((Passenger) myPassenger[i]));
+                                    System.out.println("Total Price Passenger "+(i+1)+" : RM "+obj2.Amount((Passenger) myPassenger[i]));
+                                    
+                                    totalAmount = totalAmount + obj2.Amount((Passenger) myPassenger[i]);
+                                }
+                        }
+                        System.out.println("----------------------------------------------------------------------------------------");
+                        System.out.println("========================================================================================");
+                        System.out.println("Total Amount: RM "+totalAmount);
+                        System.out.println("========================================================================================");
+                        System.out.println("Thankyou!");
+                        System.out.println("========================================================================================");
+                }
+    */
+    
+    
+                /*
                 float totalAmount = 0;
                 //output 
                 for(int i =0; i < totalPassenger; i++){ 
                     //passenger detail 
-                    System.out.println("-----------------------------------------------------------------------------------------------------");
+                    System.out.println("----------------------------------------------------------------------------------------");
                     System.out.println("Passenger "+(i+1)); 
-                    System.out.println("-----------------------------------------------------------------------------------------------------");
+                    System.out.println("----------------------------------------------------------------------------------------");
                     
                     System.out.println("Name\t:"+myPassenger[i].getP_Name());
                     
@@ -256,18 +398,18 @@ public class BookingMain {
                         ((Passenger)myPassenger[i]).getTicket().Type(((Passenger)myPassenger[i]).getTicket().getTravelType());
                         
                     //plane
-                    switch (plane) {
+                    switch (plane[i]) {
                         case 1 -> {
-                           ((AirAsia)myAirAsia[i]).AirplaneName();
-                           ((AirAsia)myAirAsia[i]).AirplaneCode();
+                            System.out.println("Airplane Type: "+((AirAsia)myAirAsia[i]).AirplaneName());
+                            System.out.println("Airplane Code: "+((AirAsia)myAirAsia[i]).AirplaneCode());
                         }
                         case 2 -> {
-                            ((Mas)myMas[i]).AirplaneName();
-                            ((Mas)myMas[i]).AirplaneCode();
+                            System.out.println("Airplane Type: "+((Mas)myMas[i]).AirplaneName());
+                            System.out.println("Airplane Code: "+((Mas)myMas[i]).AirplaneCode());
                         }
                         case 3 -> {
-                            ((Malindo)myMalindo[i]).AirplaneName();
-                            ((Malindo)myMalindo[i]).AirplaneCode();
+                            System.out.println("Airplane Type: "+((Malindo)myMalindo[i]).AirplaneName());
+                            System.out.println("Airplane Code: "+((Malindo)myMalindo[i]).AirplaneCode());
                         }
                         default -> {
                         }
@@ -307,7 +449,7 @@ public class BookingMain {
                             System.out.println("Ticket Price: RM "+ ((Passenger)myPassenger[i]).getTicket().DestinationPrice(((Passenger)myPassenger[i]).getTicket().getDestination()));
                             System.out.println("Travel Type Price: RM "+((Passenger)myPassenger[i]).getTicket().TravelPrice( ((Passenger)myPassenger[i]).getTicket().getTravelType(), ((Passenger)myPassenger[i]).getTicket().getDPrice()));
 
-                            switch (plane) {
+                            switch (plane[i]) {
                             case 1 -> {
                                System.out.println("Flight Class Price : RM "+FCPrice[i]);
                                System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
@@ -332,13 +474,13 @@ public class BookingMain {
                             default -> {
                             }
                         }
-                        System.out.println("-----------------------------------------------------------------------------------------------------");
+                        System.out.println("----------------------------------------------------------------------------------------");
                         totalAmount = totalAmount + AmountPrice[i];
                 } 
-                System.out.println("====================================================================================================");
+                System.out.println("========================================================================================");
                 System.out.println("Total Amount: RM "+totalAmount);
-                System.out.println("====================================================================================================");
+                System.out.println("========================================================================================");
                 System.out.println("Thankyou!");
-                System.out.println("====================================================================================================");
+                System.out.println("========================================================================================");*/
     }
 }

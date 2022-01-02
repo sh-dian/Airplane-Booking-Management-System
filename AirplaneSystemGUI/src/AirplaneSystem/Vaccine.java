@@ -27,28 +27,14 @@ public class Vaccine {
         covid19_Result = null;
     }
     
-    String DisplayVaccineType(int VaccineType){
-        String V_Type;
-        
-        switch (getVaccineType()) {
-            case 1 -> V_Type = "Sinovac";
-            case 2 -> V_Type = "Astrazeneca";
-            case 3 -> V_Type = "Pfizer";
-            default -> {
-                V_Type = null;
-            }
-        }
-        
-        /*
+    void DisplayVaccineType(int VaccineType){
         switch (getVaccineType()) {
             case 1 -> System.out.println("Vaccine Type: Sinovac");
             case 2 -> System.out.println("Vaccine Type: Astrazeneca");
             case 3 -> System.out.println("Vaccine Type: Pfizer");
             default -> {
             }
-        }*/
-        
-        return V_Type;
+        }
     }
 
     /**

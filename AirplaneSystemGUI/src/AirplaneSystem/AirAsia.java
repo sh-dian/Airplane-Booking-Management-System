@@ -12,10 +12,11 @@ package AirplaneSystem;
  * 4. WAN MUHAMMAD DZULKHAIRIE BIN WAN ZAHARI (CB20096)
  * 5. HANIS SYAFIQA BT KHAIRIL AZLI (CB20106)
  */ 
-public class Mas extends Airplane implements AirplaneDetail{
+public class AirAsia extends Airplane implements AirplaneDetail{
     private int AirplaneCode;
+    int a;
     
-    Mas(int plane){
+    AirAsia(int plane){
         super(plane);
         AirplaneCode = 0;
     }
@@ -24,9 +25,9 @@ public class Mas extends Airplane implements AirplaneDetail{
     @Override
     public float FCPrice(Passenger passenger) {
         switch (passenger.getTicket().getFlightClass()) {
-            case 1 -> FCPrice = 100;
-            case 2 -> FCPrice = 60;
-            case 3 -> FCPrice = 55;
+            case 1 -> FCPrice = 50;
+            case 2 -> FCPrice = 30;
+            case 3 -> FCPrice = 25;
             default -> {
             }
         }
@@ -43,7 +44,6 @@ public class Mas extends Airplane implements AirplaneDetail{
         return total;
     }
     
-    
     @Override
     public float Discount(Passenger passenger) {
         disc = total * passenger.Discount(passenger.getP_Age(), passenger.getOkuDeclaration());
@@ -51,21 +51,14 @@ public class Mas extends Airplane implements AirplaneDetail{
         return disc;
     }
     
-    @Override
-    public float Amount(Passenger passenger) {
-        amount = total - disc;
-        
-        return amount;
-    }
-    
     //Interface class 
     @Override
     public String AirplaneName() {
         String type = null;
         
-        if(getPlane() == 2){
-            type = "Mas";
-        }
+        if(getPlane() == 1){
+            type = "AirAsia";
+        }   
         
         return type;
     }
@@ -74,17 +67,18 @@ public class Mas extends Airplane implements AirplaneDetail{
     public String AirplaneCode() {
         String AirplaneCode = null;
         
-        if(getPlane() == 2){
+        if(getPlane() == 1){
             if(getAirplaneCode() == 1){
-                AirplaneCode = "MAS55";
+                AirplaneCode = "AA052";
             }
             else{
-                AirplaneCode = "MAS78";
+                AirplaneCode = "AA889";
             }
         }
         
         return AirplaneCode;
     }
+
 
     /**
      * @return the AirplaneCode

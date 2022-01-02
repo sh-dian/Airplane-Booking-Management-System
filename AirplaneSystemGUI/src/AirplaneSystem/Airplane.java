@@ -17,7 +17,6 @@ abstract public class Airplane {
     public float FCPrice;
     public float total;
     public float disc;
-    float amount;
     public Passenger passenger;
     
     Airplane(int plane){
@@ -25,15 +24,13 @@ abstract public class Airplane {
         FCPrice = 0;
         total = 0;
         disc = 0;
-        amount = 0;
         passenger = new Passenger();
     }
     
     abstract public float FCPrice(Passenger passenger);
     abstract public float TicketPrice(Passenger passenger);
     abstract public float Discount(Passenger passenger);
-    abstract public float Amount(Passenger passenger);
-    
+
     /**
      * @return the plane
      */

@@ -71,20 +71,15 @@ public class Passenger extends Person{
         return Discount;
     }
     
-    String AreOku(int okuDeclaration){
-        String declaration;
-        
+    int AreOku(int okuDeclaration){
         if(getOkuDeclaration() == 1){
-            declaration = "Yes";
+            System.out.println("OKU: Yes");
         }
         else if(getOkuDeclaration() == 2){
-            declaration = "No";
-        }
-        else{
-            declaration = null;
+            System.out.println("OKU: No");
         }
         
-        return declaration;
+        return okuDeclaration;
     }
     
     void VaccineDate(){

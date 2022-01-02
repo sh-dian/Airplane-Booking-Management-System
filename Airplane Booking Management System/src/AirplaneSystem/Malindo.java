@@ -50,24 +50,39 @@ public class Malindo extends Airplane implements AirplaneDetail{
         return disc;
     }
     
+    @Override
+    public float Amount(Passenger passenger) {
+        amount = total - disc;
+        
+        return amount;
+    }
+    
     //Interface class 
     @Override
-    public void AirplaneName() {
+    public String AirplaneName() {
+        String type = null;
+        
         if(getPlane() == 3){
-            System.out.println("Airplane Type: Malindo");
+            type = "Malindo";
         }
+        
+        return type;
     }
     
     @Override
-    public void AirplaneCode() {
+    public String AirplaneCode() {
+        String AirplaneCode = null;
+        
         if(getPlane() == 3){
             if(getAirplaneCode() == 1){
-                System.out.println("Airplane Code: MD460");
+                AirplaneCode = "MD460";
             }
             else{
-                System.out.println("Airplane Code: MD157");
+                AirplaneCode = "MD460";
             }
         }
+        
+        return AirplaneCode;
     }
 
     /**

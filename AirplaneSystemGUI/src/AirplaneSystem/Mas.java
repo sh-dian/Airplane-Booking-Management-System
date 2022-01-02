@@ -51,13 +51,6 @@ public class Mas extends Airplane implements AirplaneDetail{
         return disc;
     }
     
-    @Override
-    public float Amount(Passenger passenger) {
-        amount = total - disc;
-        
-        return amount;
-    }
-    
     //Interface class 
     @Override
     public String AirplaneName() {

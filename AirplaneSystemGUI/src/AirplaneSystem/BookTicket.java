@@ -32,26 +32,8 @@ public class BookTicket {
         TravelPrice = 0;
     }
     
-    String FlightDestination(int destination){
-        String Flight_D;
-        
+    int FlightDestination(int destination){
         switch (getDestination()) {
-            case 1 -> Flight_D = "Kedah";
-            case 2 -> Flight_D = "Selangor";
-            case 3 -> Flight_D = "Penang";
-            case 4 -> Flight_D = "Perak";
-            case 5 -> Flight_D = "Pahang";
-            case 6 -> Flight_D = "Johor";
-            case 7 -> Flight_D = "Melaka";
-            case 8 -> Flight_D = " Kelantan/Terengganu";
-            case 9 -> Flight_D = "Sarawak";
-            case 10 -> Flight_D = "Sabah";
-            default -> {
-                Flight_D = null;
-            }
-        }
-        
-        /*switch (getDestination()) {
             case 1 -> System.out.println("Destination: Kedah");
             case 2 -> System.out.println("Destination: Selangor");
             case 3 -> System.out.println("Destination: Penang");
@@ -64,9 +46,9 @@ public class BookTicket {
             case 10 -> System.out.println("Destination: Sabah");
             default -> {
             }
-        }*/
+        }
         
-        return Flight_D;
+        return destination;
     }
     
     float DestinationPrice(int destination){
@@ -88,17 +70,15 @@ public class BookTicket {
         return DPrice;
     }
     
-    String Type(int travelType){
-        String travel_Type;
-        
+    int Type(int travelType){
         if(getTravelType() == 1){
-            travel_Type = "One Way Trip";
+            System.out.println("Travel Type: One Way Trip");
         }
         else{
-            travel_Type = "Round Trip";
+            System.out.println("Travel Type: Round Trip");
         }
         
-        return travel_Type;
+        return travelType;
     }
     
     float TravelPrice(int travelType, float DPrice){
@@ -111,27 +91,15 @@ public class BookTicket {
         return TravelPrice;
     }
     
-    String FClass(int flightClass){
-        String FClass;
-        
-        switch (getFlightClass()) {
-            case 1 -> FClass = "Business Class";
-            case 2 -> FClass = "First Class";
-            case 3 -> FClass = "Economy Class";
-            default -> {
-                FClass = null;
-            }
-        }
-        
-        /*
+    int FClass(int flightClass){
         switch (getFlightClass()) {
             case 1 -> System.out.println("Class Type: Business Class");
             case 2 -> System.out.println("Class Type: First Class");
             case 3 -> System.out.println("Class Type: Economy Class");
             default -> {
             }
-        }*/
-        return FClass;
+        }
+        return flightClass;
     }
     
     //overload method
