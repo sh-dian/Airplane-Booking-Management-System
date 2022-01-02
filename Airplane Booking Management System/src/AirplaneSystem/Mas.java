@@ -15,9 +15,10 @@ package AirplaneSystem;
 public class Mas extends Airplane implements AirplaneDetail{
     private int AirplaneCode;
     
-    Mas(int plane){
+    //parameter update - AirplaneCode
+    Mas(int plane, int AirplaneCode){
         super(plane);
-        AirplaneCode = 0;
+        this.AirplaneCode = AirplaneCode;
     }
     
     //abstract class
@@ -51,17 +52,20 @@ public class Mas extends Airplane implements AirplaneDetail{
         return disc;
     }
     
+    //new method in abstract class
     @Override
-    public float Amount(Passenger passenger) {
+    public float Amount(float total, float disc) {
         amount = total - disc;
         
-        return amount;
+        return getAmount();
     }
     
     //Interface class 
+    
+    //Change method return value (void -> String)
     @Override
     public String AirplaneName() {
-        String type = null;
+        String type = null; //new variable
         
         if(getPlane() == 2){
             type = "Mas";
@@ -70,9 +74,10 @@ public class Mas extends Airplane implements AirplaneDetail{
         return type;
     }
     
+    //Change method return value (float -> String)
     @Override
     public String AirplaneCode() {
-        String AirplaneCode = null;
+        String AirplaneCode = null; //new variable
         
         if(getPlane() == 2){
             if(getAirplaneCode() == 1){

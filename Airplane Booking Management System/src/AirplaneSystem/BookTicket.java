@@ -32,8 +32,9 @@ public class BookTicket {
         TravelPrice = 0;
     }
     
+    //Change method return value (int -> String)
     String FlightDestination(int destination){
-        String Flight_D;
+        String Flight_D;//new variable
         
         switch (getDestination()) {
             case 1 -> Flight_D = "Kedah";
@@ -50,21 +51,6 @@ public class BookTicket {
                 Flight_D = null;
             }
         }
-        
-        /*switch (getDestination()) {
-            case 1 -> System.out.println("Destination: Kedah");
-            case 2 -> System.out.println("Destination: Selangor");
-            case 3 -> System.out.println("Destination: Penang");
-            case 4 -> System.out.println("Destination: Perak");
-            case 5 -> System.out.println("Destination: Pahang");
-            case 6 -> System.out.println("Destination: Johor");
-            case 7 -> System.out.println("Destination: Melaka");
-            case 8 -> System.out.println("Destination: Kelantan/Terengganu");
-            case 9 -> System.out.println("Destination: Sarawak");
-            case 10 -> System.out.println("Destination: Sabah");
-            default -> {
-            }
-        }*/
         
         return Flight_D;
     }
@@ -88,8 +74,9 @@ public class BookTicket {
         return DPrice;
     }
     
+    //Change method return value (int -> String)
     String Type(int travelType){
-        String travel_Type;
+        String travel_Type;//new variable
         
         if(getTravelType() == 1){
             travel_Type = "One Way Trip";
@@ -111,8 +98,9 @@ public class BookTicket {
         return TravelPrice;
     }
     
+    //Change method return value (int -> String)
     String FClass(int flightClass){
-        String FClass;
+        String FClass;//new variable
         
         switch (getFlightClass()) {
             case 1 -> FClass = "Business Class";
@@ -123,14 +111,6 @@ public class BookTicket {
             }
         }
         
-        /*
-        switch (getFlightClass()) {
-            case 1 -> System.out.println("Class Type: Business Class");
-            case 2 -> System.out.println("Class Type: First Class");
-            case 3 -> System.out.println("Class Type: Economy Class");
-            default -> {
-            }
-        }*/
         return FClass;
     }
     

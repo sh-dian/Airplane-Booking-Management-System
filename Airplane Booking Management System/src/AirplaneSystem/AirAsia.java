@@ -15,9 +15,10 @@ package AirplaneSystem;
 public class AirAsia extends Airplane implements AirplaneDetail{
     private int AirplaneCode;
     
-    AirAsia(int plane){
+    //parameter update - AirplaneCode
+    AirAsia(int plane, int AirplaneCode){
         super(plane);
-        AirplaneCode = 0;
+        this.AirplaneCode = AirplaneCode;
     }
     
     //abstract class
@@ -36,7 +37,6 @@ public class AirAsia extends Airplane implements AirplaneDetail{
 
     @Override
     public float TicketPrice(Passenger passenger) {
-        
         total = (passenger.getTicket().DestinationPrice(passenger.getTicket().getDestination()) + passenger.getTicket().TravelPrice(passenger.getTicket().getTravelType(), passenger.getTicket().getDPrice())
                 + passenger.LuggagePrice(passenger.getLuggage()) + FCPrice);
         
@@ -50,17 +50,20 @@ public class AirAsia extends Airplane implements AirplaneDetail{
         return disc;
     }
     
+    //new method in abstract class
     @Override
-    public float Amount(Passenger passenger) {
-        amount = total - disc;
+    public float Amount(float total, float disc) {
+        amount = getTotal() - getDisc();
         
-        return amount;
+        return getAmount();
     }
     
     //Interface class 
+    
+    //Change method return value (void -> String)
     @Override
     public String AirplaneName() {
-        String type = null;
+        String type = null; //new variable
         
         if(getPlane() == 1){
             type = "AirAsia";
@@ -69,9 +72,10 @@ public class AirAsia extends Airplane implements AirplaneDetail{
         return type;
     }
     
+    //Change method return value (float -> String)
     @Override
     public String AirplaneCode() {
-        String AirplaneCode = null;
+        String AirplaneCode = null; //new variable
         
         if(getPlane() == 1){
             if(getAirplaneCode() == 1){

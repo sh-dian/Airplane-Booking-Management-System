@@ -16,8 +16,8 @@ abstract public class Airplane {
     public int plane;
     public float FCPrice;
     public float total;
-    public float disc;
-    float amount;
+    public float disc; //new variable
+    protected float amount; //new variable
     public Passenger passenger;
     
     Airplane(int plane){
@@ -31,8 +31,8 @@ abstract public class Airplane {
     
     abstract public float FCPrice(Passenger passenger);
     abstract public float TicketPrice(Passenger passenger);
-    abstract public float Discount(Passenger passenger);
-    abstract public float Amount(Passenger passenger);
+    abstract public float Discount(Passenger passenger); //new method
+    abstract public float Amount(float total, float disc); //new method
     
     /**
      * @return the plane
@@ -63,17 +63,16 @@ abstract public class Airplane {
     }
 
     /**
-     * @param disc the disc to set
-     */
-    public void setDisc(float disc) {
-        this.disc = disc;
-    }
-
-    /**
      * @return the passenger
      */
     public Passenger getPassenger() {
         return passenger;
     }
 
+    /**
+     * @return the amount
+     */
+    public float getAmount() {
+        return amount;
+    }
 }

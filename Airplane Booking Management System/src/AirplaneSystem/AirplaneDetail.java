@@ -14,6 +14,8 @@ package AirplaneSystem;
  */ 
 public interface AirplaneDetail {
     
+    //Change method return value (void -> String)
     abstract public String AirplaneName();
+    //Change method return value (float -> String)
     abstract public String AirplaneCode();
 }

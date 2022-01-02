@@ -18,13 +18,14 @@ public class Person {
     protected String P_icNum;
     protected String P_phoneNum;
     protected int P_Age;
-    protected String password;
+    protected String password;//new variable
     
     Person(){
         P_Name = null;
         P_Age = 0;
     }
     
+    //parameter update - password
     Person(String P_Name,String P_Email, String P_icNum, String P_phoneNum, int P_Age, String password){
         this.P_Name = P_Name;
         this.P_Email = P_Email;
@@ -34,6 +35,7 @@ public class Person {
         this.password = password;
     }
     
+    //new constructor
     Person(String P_Email, String password){
         this.P_Email = P_Email;
         this.password = password;
