@@ -383,6 +383,13 @@ public class BookingMain {
             //change 'amount' method later for design pattern
 
                 //output 
+                
+                System.out.println("\nOUTPUT");
+                System.out.println("========================================================================================\n");
+                System.out.println("\tKUALA LUMPUR INTERNATIONAL AIRPORT BOOKING SYSTEM");
+                System.out.println("========================================================================================");
+                System.out.println("\t\t\tThankyou for purchasing with us!");
+                System.out.println("========================================================================================");
                 for(int i =0; i < totalPassenger; i++){ 
                     //passenger detail 
                     System.out.println("----------------------------------------------------------------------------------------");
@@ -448,7 +455,8 @@ public class BookingMain {
                             ((Passenger)myPassenger[i]).getVaccine().DisplayVaccineType(((Passenger)myPassenger[i]).getVaccine().getVaccineType());
                             ((Passenger)myPassenger[i]).VaccineDate();
                         }
-
+                        
+                    System.out.println("----------------------------------------------------------------------------------------");
                     //Price
                     System.out.println("Ticket Price: RM "+ ((Passenger)myPassenger[i]).getTicket().DestinationPrice(((Passenger)myPassenger[i]).getTicket().getDestination()));
                     System.out.println("Travel Type Price: + RM "+((Passenger)myPassenger[i]).getTicket().TravelPrice( ((Passenger)myPassenger[i]).getTicket().getTravelType(), ((Passenger)myPassenger[i]).getTicket().getDPrice()));
