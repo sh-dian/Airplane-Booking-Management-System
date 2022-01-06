@@ -21,8 +21,13 @@ public class Passenger extends Person{
     public float LPrice;
     public float Discount;
     
-    Passenger(){
+    Passenger(String P_Name, int P_Age){//1
         super();
+        this.P_Name = P_Name;
+        this.P_Age = P_Age;
+    }
+    
+    Passenger(){
         luggage = 0;
         okuDeclaration = 0;
         LPrice = 0;
@@ -39,6 +44,7 @@ public class Passenger extends Person{
         
         if(getP_Age() <=12){
             discP = (float) 0.10;
+            
         }
         else if(getP_Age() >=60){
             discP = (float) 0.15;

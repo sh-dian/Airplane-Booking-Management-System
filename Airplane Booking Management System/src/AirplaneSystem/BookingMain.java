@@ -212,19 +212,19 @@ public class BookingMain {
                         switch (plane[i]) {
                             case 1 ->{
                                 FCPrice[i] = ((AirAsia)myAirAsia[i]).FCPrice((Passenger) myPassenger[i]);
-                                TPrice[i] = ((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i]);
+                                TPrice[i] = ((AirAsia)myAirAsia[i]).TicketPrice((Passenger) myPassenger[i],FCPrice[i]);
                                 Discount[i] = ((AirAsia)myAirAsia[i]).Discount((Passenger) myPassenger[i]);
                                 AmountPrice[i] = ((AirAsia)myAirAsia[i]).Amount(TPrice[i], Discount[i]);
                             }
                             case 2 ->{
                                 FCPrice[i] = ((Mas)myMas[i]).FCPrice((Passenger) myPassenger[i]);
-                                TPrice[i] = ((Mas)myMas[i]).TicketPrice((Passenger) myPassenger[i]);
+                                TPrice[i] = ((Mas)myMas[i]).TicketPrice((Passenger) myPassenger[i],FCPrice[i]);
                                 Discount[i] = ((Mas)myMas[i]).Discount((Passenger) myPassenger[i]);
                                 AmountPrice[i] = ((Mas)myMas[i]).Amount(TPrice[i], Discount[i]);
                             }
                             case 3 ->{
                                 FCPrice[i] = ((Malindo)myMalindo[i]).FCPrice((Passenger) myPassenger[i]);
-                                TPrice[i] = ((Malindo)myMalindo[i]).TicketPrice((Passenger) myPassenger[i]);
+                                TPrice[i] = ((Malindo)myMalindo[i]).TicketPrice((Passenger) myPassenger[i],FCPrice[i]);
                                 Discount[i] = ((Malindo)myMalindo[i]).Discount((Passenger) myPassenger[i]);
                                 AmountPrice[i] = ((Malindo)myMalindo[i]).Amount(TPrice[i], Discount[i]);
                             }
@@ -250,7 +250,7 @@ public class BookingMain {
                                 System.out.print("2nd Dose [dd/mm/yy] : "); 
                                 ((Passenger)myPassenger[i]).getVaccine().setSecondDose_Date(input.nextLine()); 
 
-                                System.out.print("Covid-19 Result : "); 
+                                System.out.print("Covid-19 Result Code: "); 
                                 ((Passenger)myPassenger[i]).getVaccine().setCovid19_Result(input.nextLine()); 
                             } 
                             else{ 
@@ -260,29 +260,33 @@ public class BookingMain {
                 System.out.println("----------------------------------------------------------------------------------------");
             } 
             
-            //Design Pattern
             /*
+            //Design Pattern
                 //declare factory obj
                 AirplaneFactory factoryObj = new AirplaneFactory();
                 
                 for(int i =0; i < totalPassenger; i++)
                 {
-                    AirplaneDetail obj = factoryObj.getAirplaneDetail(plane[i]);
-                    Airplane obj2 = factoryObj.getAirplane(plane[i]);
+                    AirplaneDetail obj = factoryObj.getAirplaneDetail(plane[i], planeCode[i]);
+                    Airplane obj2 = factoryObj.getAirplane(plane[i], planeCode[i]);
 
                     if(obj != null){
                         System.out.println("Airplane Type: "+obj.AirplaneName());
                         System.out.println("Airplane Code: "+obj.AirplaneCode());
-                        System.out.println("Flight Class Price: "+obj2.FCPrice((Passenger) myPassenger[i]));
-                        System.out.println("Total Ticket Price: "+obj2.TicketPrice((Passenger) myPassenger[i]));
-                        System.out.println("Discount : "+obj2.Discount((Passenger) myPassenger[i]));
+                        
+                        System.out.println("Flight Ticket Price: +RM "+obj2.FCPrice((Passenger) myPassenger[i]));
+                        System.out.println("Total Ticket Price: RM "+obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])));
+                        System.out.println("Discount : - RM "+obj2.Discount((Passenger) myPassenger[i]));
+                        System.out.println("Total Price Passenger "+(i+1)+" : RM "+obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i])));
+
+                        totalAmount = totalAmount + obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i]));
+                        
+                        System.out.println("Total Amount: RM "+ totalAmount);
                     }
                 }*/
             
-            /*
-            AirplaneFactory factoryObj = new AirplaneFactory();   
             
-            float totalAmount = 0;
+            AirplaneFactory factoryObj = new AirplaneFactory();
             System.out.println("========================================================================================");
 
             System.out.println("\nDESIGN PATTERN OUTPUT");
@@ -308,7 +312,7 @@ public class BookingMain {
                         ((Passenger)myPassenger[i]).getTicket().Type(((Passenger)myPassenger[i]).getTicket().getTravelType()));
                         
                             //Airplane
-                            AirplaneDetail obj = factoryObj.getAirplaneDetail(plane[i]);
+                            AirplaneDetail obj = factoryObj.getAirplaneDetail(plane[i], planeCode[i]);
 
                             if(obj != null){
                                 System.out.println("Airplane Type: "+obj.AirplaneName());
@@ -357,7 +361,7 @@ public class BookingMain {
                                 System.out.println("Ticket Price: RM "+ ((Passenger)myPassenger[i]).getTicket().DestinationPrice(((Passenger)myPassenger[i]).getTicket().getDestination()));
                                 System.out.println("Travel Type Price: RM "+((Passenger)myPassenger[i]).getTicket().TravelPrice( ((Passenger)myPassenger[i]).getTicket().getTravelType(), ((Passenger)myPassenger[i]).getTicket().getDPrice()));
 
-                                Airplane obj2 = factoryObj.getAirplane(plane[i]);
+                                Airplane obj2 = factoryObj.getAirplane(plane[i], planeCode[i]);
 
                                 if(obj != null){
                                     System.out.println("Flight Class Price: "+obj2.FCPrice((Passenger) myPassenger[i]));
@@ -366,11 +370,11 @@ public class BookingMain {
                                 System.out.println("Luggage Price: RM "+((Passenger)myPassenger[i]).LuggagePrice(((Passenger)myPassenger[i]).getLuggage()));
                                 
                                 if(obj != null){
-                                    System.out.println("Total Ticket Price: "+obj2.TicketPrice((Passenger) myPassenger[i]));
-                                    System.out.println("Discount : "+obj2.Discount((Passenger) myPassenger[i]));
-                                    //System.out.println("Total Price Passenger "+(i+1)+" : RM "+obj2.Amount();
-                                    
-                                    //totalAmount = totalAmount + obj2.Amount();
+                                    System.out.println("Total Ticket Price: RM "+obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])));
+                                    System.out.println("Discount : - RM "+obj2.Discount((Passenger) myPassenger[i]));
+                                    System.out.println("Total Price Passenger "+(i+1)+" : RM "+obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i])));
+
+                                    totalAmount = totalAmount + obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i]));
                                 }
                         }
                         System.out.println("----------------------------------------------------------------------------------------");
@@ -379,11 +383,9 @@ public class BookingMain {
                         System.out.println("========================================================================================");
                         System.out.println("Thankyou!");
                         System.out.println("========================================================================================");
-                */
-            //change 'amount' method later for design pattern
-
+                        
                 //output 
-                
+                /*
                 System.out.println("\nOUTPUT");
                 System.out.println("========================================================================================\n");
                 System.out.println("\tKUALA LUMPUR INTERNATIONAL AIRPORT BOOKING SYSTEM");
@@ -499,6 +501,6 @@ public class BookingMain {
                 System.out.println("Total Amount: RM "+totalAmount);
                 System.out.println("========================================================================================");
                 System.out.println("Thankyou!");
-                System.out.println("========================================================================================");
+                System.out.println("========================================================================================");*/
     }
 }
