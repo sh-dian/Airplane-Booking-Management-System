@@ -43,7 +43,7 @@ public class MenuGUI extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 74, 240, -1));
 
-        jButton2.setText("SEARCH, DELETE OR UPDATE TICKET");
+        jButton2.setText("MY TICKET");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

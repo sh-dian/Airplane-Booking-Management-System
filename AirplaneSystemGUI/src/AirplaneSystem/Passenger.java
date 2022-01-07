@@ -27,6 +27,8 @@ public class Passenger extends Person{
     private Vaccine vaccine;
     private BookTicket ticket;
     
+    private AirplaneDetail objA_Detail; //design pattern
+    
     public float LPrice;
     public float Discount;
     
@@ -161,14 +163,17 @@ public class Passenger extends Person{
     
         //Database
         //add / insert
-        public boolean Booking(){
+        public boolean Booking(int i,float a, float b, float c){
             Database conn = new Database();
             BusinessClass bc = new BusinessClass();
+            FirstClass fc = new FirstClass();
+            EconomyClass ec = new EconomyClass();
             
             PreparedStatement ps;
             String bookQuery = "INSERT INTO `airplanebookingticket`(`Name`, `Age`, `Destination`, `Travel Type`,`Class Type`,`Seat Number`, `Date Travel`, `Date Return`, "
-                    + "`Total Luggage`,`OKU`,`Vaccinated`, `Vaccine Type`, `Vaccine 1st Dose Date`, `Vaccine 2nd Dose Date`, `Covid-19 Result Code`) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "`Total Luggage`,`OKU`,`Vaccinated`, `Vaccine Type`, `Vaccine 1st Dose Date`, `Vaccine 2nd Dose Date`, `Covid-19 Result Code`,`Airplane Type`,`Airplane Code`,"
+                    + "`Ticket Price`, `Luggage Charge`, `Travel Type Price`, `Flight Class Price`,`Discount`,`Total Price`) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             
             try {
                 ps = conn.getConnection().prepareStatement(bookQuery);
@@ -179,37 +184,57 @@ public class Passenger extends Person{
                 ps.setString(4, ticket.Type(ticket.getTravelType()));
                 ps.setString(5, ticket.FClass(ticket.getFlightClass()));
                 
-                ps.setInt(6,bc.getSeatNum());
-                    
+                    if(ticket.FClass(ticket.getFlightClass()).equals(1)){
+                        ps.setInt(6, bc.getSeatNum());
+                    }
+                    else if(ticket.FClass(ticket.getFlightClass()).equals(2)){
+                        ps.setInt(6, fc.getSeatNum());
+                    }
+                    else{
+                        ps.setInt(6, i);
+                    }
+                
                 ps.setString(7, ticket.getDateTravel());
                 
-                if(ticket.getDateReturn().equals("")){
-                    ps.setString(8, "NULL");
-                }
-                else{
-                    ps.setString(8, ticket.getDateReturn());
-                }
+                    if(ticket.getDateReturn().equals("")){
+                        ps.setString(8, "NULL");
+                    }
+                    else{
+                        ps.setString(8, ticket.getDateReturn());
+                    }
                    
                 ps.setInt(9,luggage);
                 ps.setString(10, AreOku(okuDeclaration));
                 
-                if(vaccine.getVaccineDeclaration() == 1){
-                    ps.setString(11, "Yes");
-                }
-                else{
-                    ps.setString(11, "No");
-                }
+                    if(vaccine.getVaccineDeclaration() == 1){
+                        ps.setString(11, "Yes");
+                    }
+                    else{
+                        ps.setString(11, "No");
+                    }
                 
                 ps.setString(12, vaccine.DisplayVaccineType(vaccine.getVaccineType()));
                 ps.setString(13, vaccine.getFirstDose_Date());
                 ps.setString(14, vaccine.getSecondDose_Date());
                 ps.setString(15, vaccine.getCovid19_Result());
+                    
+                    //design pattern
+                    ps.setString(16, objA_Detail.AirplaneName());
+                    ps.setString(17, objA_Detail.AirplaneCode());
                 
-                if(ps.executeUpdate() > 0) {
-                    return true;
-                } else {
-                    return false;
-                }
+                //Price
+                ps.setFloat(18, ticket.DestinationPrice(ticket.getDestination()));
+                ps.setFloat(19, LuggagePrice(luggage));
+                ps.setFloat(20, ticket.TravelPrice(ticket.getTravelType(), ticket.getDPrice()));
+                ps.setFloat(21, a);    
+                ps.setFloat(22, b);  
+                ps.setFloat(23, c); 
+                
+                    if(ps.executeUpdate() > 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 
             } catch (SQLException ex) {
                 Logger.getLogger(BookingGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -276,7 +301,7 @@ public class Passenger extends Person{
         }
         
        //update
-        public void UpdateTicket(JTable jTable1, String value1,String value2, String value3, String value4){
+        public void UpdateTicket(JTable jTable1, String value1,String value2){
             Database conn = new Database();
             PreparedStatement ps;
             ResultSet rs;
@@ -287,7 +312,7 @@ public class Passenger extends Person{
                 int row = jTable1.getSelectedRow();
                 String Table_Click = (jTable1.getModel().getValueAt(row, 0).toString());
 
-                ps = conn.getConnection().prepareStatement("UPDATE `airplanebookingticket` SET `Name`= '"+value1+"',`Date Travel`='"+value2+"', `Date Return`='"+value3+"', `Covid-19 Result Code`='"+value4+"' WHERE `Name`= '"+Table_Click+"'");
+                ps = conn.getConnection().prepareStatement("UPDATE `airplanebookingticket` SET `Name`= '"+value1+"'`Covid-19 Result Code`='"+value2+"' WHERE `Name`= '"+Table_Click+"'");
                 ps.execute();
                 JOptionPane.showMessageDialog(null, "Updated");
             }
@@ -295,4 +320,14 @@ public class Passenger extends Person{
                 JOptionPane.showMessageDialog(null, e);
             }
         }
+
+    /**
+     * @param objA_Detail the objA_Detail to set
+     */
+    public void setObjA_Detail(String plane, String planeCode) {
+        AirplaneFactory factoryObj = new AirplaneFactory();
+        AirplaneDetail obj = factoryObj.getAirplaneDetail(Integer.parseInt(plane), Integer.parseInt(planeCode));
+        
+        this.objA_Detail = obj;
+    }
 }

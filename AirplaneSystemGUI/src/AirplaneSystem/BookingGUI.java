@@ -4,16 +4,7 @@
  */
 package AirplaneSystem;
 
-import java.awt.Color;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.border.Border;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  *
@@ -21,13 +12,12 @@ import javax.swing.JOptionPane;
  */
 public class BookingGUI extends javax.swing.JFrame {
     
-    int totalPassenger;
+    int totalPassenger = 0;
     /**
      * Creates new form BookingGUI
      */
     public BookingGUI() {
         initComponents();
-        
     }
 
     /**
@@ -81,6 +71,13 @@ public class BookingGUI extends javax.swing.JFrame {
         area = new javax.swing.JTextArea();
         jButtonAdd = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jTextField_FCPrice = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField_TicketPrice = new javax.swing.JTextField();
+        jTextField_Discount = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -251,6 +248,27 @@ public class BookingGUI extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 580, 130, 40));
 
+        jTextField_FCPrice.setText("Flight Class Price");
+        getContentPane().add(jTextField_FCPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 180, -1));
+
+        jTextField1.setText("Total");
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 180, -1));
+
+        jTextField_TicketPrice.setText("Ticket Price");
+        getContentPane().add(jTextField_TicketPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, 180, -1));
+
+        jTextField_Discount.setText("Discount");
+        getContentPane().add(jTextField_Discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 180, -1));
+
+        jLabel1.setText("Passenger : 0");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 90, -1));
+
+        jLabel2.setText("PROCEED TO \"ADD\" OTHER PASSENGER (IF ANY)");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, -1, 20));
+
+        jLabel3.setText("PLEASE CLICK \"BOOK\" BEFORE");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, -1, 20));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -296,10 +314,15 @@ public class BookingGUI extends javax.swing.JFrame {
         BusinessClass bc = new BusinessClass();
         FirstClass fc = new FirstClass();
         EconomyClass ec = new EconomyClass();
+        int i = 0;
         
-        PreparedStatement ps;
+        Integer.parseInt(jTextField_TotalPassenger.getText());
         
-        totalPassenger = Integer.valueOf(jTextField_TotalPassenger.getText());
+        //design pattern
+        AirplaneFactory factoryObj = new AirplaneFactory();
+        AirplaneDetail obj = factoryObj.getAirplaneDetail(Integer.valueOf(jTextField_AirplaneType.getText()),Integer.valueOf(jTextField_AirplaneCode.getText()));
+        Airplane obj2 = factoryObj.getAirplane(Integer.parseInt(jTextField_AirplaneType.getText()), Integer.parseInt(jTextField_AirplaneCode.getText()));
+        
         myP.setP_Name(jTextField_PName.getText()); 
         myP.setP_Age(Integer.valueOf(jTextField_PAge.getText()));
         myP.getTicket().setDestination(Integer.valueOf(jTextField_Destination.getText()));
@@ -308,7 +331,18 @@ public class BookingGUI extends javax.swing.JFrame {
         myP.getTicket().setDateTravel(jTextField_DateTravel.getText());
         myP.getTicket().setDateReturn(jTextField_DateReturn.getText());
         myP.setLuggage(Integer.valueOf(jTextField_Luggage.getText()));
-        bc.setSeatNum(Integer.valueOf(jTextField_SeatNum.getText()));
+        
+        
+            if(myP.getTicket().getFlightClass() == 1){
+                bc.setSeatNum(Integer.valueOf(jTextField_SeatNum.getText()));
+            }
+            else if(myP.getTicket().getFlightClass() == 2){
+                fc.setSeatNum(Integer.valueOf(jTextField_SeatNum.getText()));
+            }
+            else{
+                i = ec.Random();
+            }
+        
         myP.getVaccine().setVaccineDeclaration(Integer.valueOf(jTextField_Vaccinated.getText()));
         myP.getVaccine().setVaccineType(Integer.valueOf(jTextField_VaccineType.getText()));
         myP.getVaccine().setFirstDose_Date(jTextField_Vaccine1st.getText());
@@ -317,40 +351,83 @@ public class BookingGUI extends javax.swing.JFrame {
         
         myP.setOkuDeclaration(Integer.valueOf(jTextField_OKU.getText()));
         
-        if(myP.Booking()){
-            area.setText("===============================================================\n");
-            area.setText(area.getText()+"\t\tBOOKING\n");
-            area.setText(area.getText()+"===============================================================\n");
+            //design pattern
+            myP.setObjA_Detail(jTextField_AirplaneType.getText(), jTextField_AirplaneCode.getText());
+            
+            float fcPrice = obj2.FCPrice((Passenger)myP);
+            float tprice = obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP));
+            float discount = obj2.Discount((Passenger) myP);
+            float total = obj2.Amount(obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)), obj2.Discount((Passenger) myP));
 
+            jTextField_FCPrice.setText(Float.toString(fcPrice));
+            jTextField_TicketPrice.setText(Float.toString(tprice));
+            jTextField_Discount.setText(Float.toString(discount));
+            jTextField1.setText(Float.toString(total));
+        
+        //Receipt
+        if(myP.Booking(i,fcPrice, discount, total)){
+            
+            JOptionPane.showMessageDialog(rootPane, "Booking Complete, You May view your receipt");
+            
+            area.setText("==========================================================\n");
+            area.setText(area.getText()+"\t\tBOOKING\n");
+            area.setText(area.getText()+"===========================================================\n");
+            
             area.setText(area.getText()+"Name: "+jTextField_PName.getText());
-            area.setText(area.getText()+"Destination: "+jTextField_Destination.getText());
-            area.setText(area.getText()+"Travel Type : "+jTextField_TravelType.getText());
-            area.setText(area.getText()+"Flight Class: "+jTextField_ClassType.getText());
-            area.setText(area.getText()+"Date Travel: "+jTextField_DateTravel.getText());
-            area.setText(area.getText()+"Date Return: "+jTextField_DateReturn.getText());
-            area.setText(area.getText()+"Total Luggage: "+jTextField_Luggage.getText());
-            area.setText(area.getText()+"OKU: "+jTextField_OKU.getText());
-            area.setText(area.getText()+"Seat Num: "+jTextField_SeatNum.getText());
-            area.setText(area.getText()+"Vaccine Type: "+jTextField_VaccineType.getText());
-            area.setText(area.getText()+"First Dose Date: "+jTextField_Vaccine1st.getText());
-            area.setText(area.getText()+"Second Dose Date: "+jTextField_Vaccine2nd.getText());
-            area.setText(area.getText()+"Covid-19 Result Code: "+jTextField_Covid19.getText());
+            area.setText(area.getText()+"\nDestination: "+ myP.getTicket().FlightDestination(myP.getTicket().getDestination()));
+            area.setText(area.getText()+"\nTravel Type : "+myP.getTicket().Type(myP.getTicket().getTravelType()));
+            area.setText(area.getText()+"\nFlight Class: "+myP.getTicket().FClass(myP.getTicket().getFlightClass()));
+            area.setText(area.getText()+"\nDate Travel: "+jTextField_DateTravel.getText());
+            area.setText(area.getText()+"\nDate Return: "+jTextField_DateReturn.getText());
+            area.setText(area.getText()+"\nTotal Luggage: "+Integer.valueOf(jTextField_Luggage.getText()));
+            area.setText(area.getText()+"\nOKU: "+ myP.AreOku(myP.getOkuDeclaration()));
+            
+                if(Integer.valueOf(jTextField_ClassType.getText()).equals(1) || Integer.valueOf(jTextField_ClassType.getText()).equals(2)){
+                    area.setText(area.getText()+"\nSeat Num: "+jTextField_SeatNum.getText());
+                }
+                else{
+                    area.setText(area.getText()+"\nSeat Num: "+i);
+                }
+            
+            area.setText(area.getText()+"\nVaccine Type: "+ myP.getVaccine().DisplayVaccineType(myP.getVaccine().getVaccineType()));
+            area.setText(area.getText()+"\nFirst Dose Date: "+jTextField_Vaccine1st.getText());
+            area.setText(area.getText()+"\nSecond Dose Date: "+jTextField_Vaccine2nd.getText());
+            area.setText(area.getText()+"\nCovid-19 Result Code: "+jTextField_Covid19.getText());
+            
+                area.setText(area.getText()+"\nAirplane Name: "+obj.AirplaneName());
+                area.setText(area.getText()+"\nAirplane Code: "+obj.AirplaneCode());
+                
+                area.setText(area.getText()+"\nFlight Class Price: "+obj2.FCPrice((Passenger)myP));
+                area.setText(area.getText()+"\nTotal Ticket Price:: "+obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)));
+                area.setText(area.getText()+"\nDiscount : "+obj2.Discount((Passenger) myP));
+                area.setText(area.getText()+"\nTotal Price : RM "+obj2.Amount(obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)), obj2.Discount((Passenger) myP)));
+
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "Booking Failed");
         }
-        
-        JOptionPane.showMessageDialog(rootPane, "Booking Complete, You May view your receipt");
     }//GEN-LAST:event_jButton_BookActionPerformed
 
     private void jTextField_TotalPassengerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_TotalPassengerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_TotalPassengerActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to EXIT", "Select", JOptionPane.YES_NO_OPTION);
+        if(a==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         // TODO add your handling code here:
+        //jLabel1.setText("Passenger : "+totalPassenger);
         
-            jTextField_TotalPassenger.setText(jTextField_TotalPassenger.getText());
+        if(totalPassenger < Integer.parseInt(jTextField_TotalPassenger.getText())){
+            totalPassenger++;
+            jLabel1.setText("Passenger : "+totalPassenger);
+            
             jTextField_PName.setText("");
             jTextField_PAge.setText("");
             jTextField_Destination.setText("");
@@ -366,15 +443,12 @@ public class BookingGUI extends javax.swing.JFrame {
             jTextField_Vaccine2nd.setText("");
             jTextField_Covid19.setText("");
             jTextField_OKU.setText("");
-    }//GEN-LAST:event_jButtonAddActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you want to EXIT", "Select", JOptionPane.YES_NO_OPTION);
-        if(a==0){
-            System.exit(0);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Reach Limit", "LIMIT!", JOptionPane.ERROR_MESSAGE);
+        }
+            
+    }//GEN-LAST:event_jButtonAddActionPerformed
    
     
     /**
@@ -420,6 +494,9 @@ public class BookingGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButton_Book;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_Age;
     private javax.swing.JLabel jLabel_AirplaneCode;
     private javax.swing.JLabel jLabel_AirplaneType;
@@ -440,6 +517,7 @@ public class BookingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_Vaccinated;
     private javax.swing.JLabel jLabel_VaccineType;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_AirplaneCode;
     private javax.swing.JTextField jTextField_AirplaneType;
     private javax.swing.JTextField jTextField_ClassType;
@@ -447,11 +525,14 @@ public class BookingGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_DateReturn;
     private javax.swing.JTextField jTextField_DateTravel;
     private javax.swing.JTextField jTextField_Destination;
+    private javax.swing.JTextField jTextField_Discount;
+    private javax.swing.JTextField jTextField_FCPrice;
     private javax.swing.JTextField jTextField_Luggage;
     private javax.swing.JTextField jTextField_OKU;
     private javax.swing.JTextField jTextField_PAge;
     private javax.swing.JTextField jTextField_PName;
     private javax.swing.JTextField jTextField_SeatNum;
+    private javax.swing.JTextField jTextField_TicketPrice;
     private javax.swing.JTextField jTextField_TotalPassenger;
     private javax.swing.JTextField jTextField_TravelType;
     private javax.swing.JTextField jTextField_Vaccinated;

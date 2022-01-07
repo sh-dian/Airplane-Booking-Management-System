@@ -148,14 +148,14 @@ public class TryGUI extends javax.swing.JFrame {
                             jTextField3.setText(obj.AirplaneName());
                             jTextField4.setText(obj.AirplaneCode());
 
-                            //System.out.println("Flight Ticket Price: +RM "+obj2.FCPrice((Passenger) myPassenger[i]));
-                            //System.out.println("Total Ticket Price: RM "+obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])));
-                            //System.out.println("Discount : - RM "+obj2.Discount((Passenger) myPassenger[i]));
-                            //System.out.println("Total Price Passenger "+(i+1)+" : RM "+obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i])));
+                            System.out.println("Flight Ticket Price: +RM "+obj2.FCPrice((Passenger) myPassenger[i]));
+                            System.out.println("Total Ticket Price: RM "+obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])));
+                            System.out.println("Discount : - RM "+obj2.Discount((Passenger) myPassenger[i]));
+                            System.out.println("Total Price Passenger "+(i+1)+" : RM "+obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i])));
 
-                            //totalAmount = totalAmount + obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i]));
+                            totalAmount = totalAmount + obj2.Amount(obj2.TicketPrice((Passenger) myPassenger[i], obj2.FCPrice((Passenger) myPassenger[i])),obj2.Discount((Passenger) myPassenger[i]));
 
-                            //System.out.println("Total Amount: RM "+ totalAmount);
+                            System.out.println("Total Amount: RM "+ totalAmount);
                         }
                     }
                     else{
