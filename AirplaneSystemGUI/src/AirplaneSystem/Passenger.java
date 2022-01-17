@@ -161,13 +161,12 @@ public class Passenger extends Person{
         return Discount;
     }
     
-        //Database
+        //Database 
         //add / insert
         public boolean Booking(int i,float a, float b, float c){
             Database conn = new Database();
             BusinessClass bc = new BusinessClass();
             FirstClass fc = new FirstClass();
-            EconomyClass ec = new EconomyClass();
             
             PreparedStatement ps;
             String bookQuery = "INSERT INTO `airplanebookingticket`(`Name`, `Age`, `Destination`, `Travel Type`,`Class Type`,`Seat Number`, `Date Travel`, `Date Return`, "
@@ -184,11 +183,8 @@ public class Passenger extends Person{
                 ps.setString(4, ticket.Type(ticket.getTravelType()));
                 ps.setString(5, ticket.FClass(ticket.getFlightClass()));
                 
-                    if(ticket.FClass(ticket.getFlightClass()).equals(1)){
-                        ps.setInt(6, bc.getSeatNum());
-                    }
-                    else if(ticket.FClass(ticket.getFlightClass()).equals(2)){
-                        ps.setInt(6, fc.getSeatNum());
+                    if(ticket.FClass(ticket.getFlightClass()).equals(3)){
+                        ps.setInt(6, i);
                     }
                     else{
                         ps.setInt(6, i);
@@ -286,12 +282,16 @@ public class Passenger extends Person{
             
             try{
                 int row = jTable1.getSelectedRow();
-                String Table_Click = (jTable1.getModel().getValueAt(row, 0).toString());
-                ps = conn.getConnection().prepareStatement("DELETE FROM `airplanebookingticket` WHERE `Name` = '"+Table_Click+"'");
+                int a = JOptionPane.showConfirmDialog(null, "Please noted that if you delete recent record, it means you CANCEL BOOKING. CONFIRM?", "Select", JOptionPane.YES_NO_OPTION);
                 
-                ps.execute();
-                JOptionPane.showMessageDialog(null, "Deleted");
-                tblModel.removeRow(jTable1.getSelectedRow());
+                if(a==0){
+                    
+                    String Table_Click = (jTable1.getModel().getValueAt(row, 0).toString());
+                    ps = conn.getConnection().prepareStatement("DELETE FROM `airplanebookingticket` WHERE `Name` = '"+Table_Click+"'");
+
+                    ps.execute();
+                    tblModel.removeRow(jTable1.getSelectedRow());
+                }
                 
             }
             catch(Exception e){
@@ -312,7 +312,7 @@ public class Passenger extends Person{
                 int row = jTable1.getSelectedRow();
                 String Table_Click = (jTable1.getModel().getValueAt(row, 0).toString());
 
-                ps = conn.getConnection().prepareStatement("UPDATE `airplanebookingticket` SET `Name`= '"+value1+"'`Covid-19 Result Code`='"+value2+"' WHERE `Name`= '"+Table_Click+"'");
+                ps = conn.getConnection().prepareStatement("UPDATE `airplanebookingticket` SET `Name`= '"+value1+"',`Covid-19 Result Code`= '"+value2+"' WHERE `Name`= '"+Table_Click+"'");
                 ps.execute();
                 JOptionPane.showMessageDialog(null, "Updated");
             }

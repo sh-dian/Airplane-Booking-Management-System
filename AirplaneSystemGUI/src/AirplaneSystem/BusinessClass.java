@@ -4,11 +4,6 @@
  */
 package AirplaneSystem;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /** 
  * @Group 8 
  * 1. SHARIFAH LYDIEANNA BT SYED SHAMSUDDIN (CB20050)

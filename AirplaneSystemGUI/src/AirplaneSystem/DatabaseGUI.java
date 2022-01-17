@@ -52,6 +52,20 @@ public class DatabaseGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        SelectTotalPrice = new javax.swing.JTextField();
+        SelectTicketPrice = new javax.swing.JTextField();
+        SelectTravelTypePrice = new javax.swing.JTextField();
+        SelectFlightClassPrice = new javax.swing.JTextField();
+        SelectLuggagePrice = new javax.swing.JTextField();
+        SelectDiscount = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,9 +108,9 @@ public class DatabaseGUI extends javax.swing.JFrame {
                 jButton_DeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, 130, 40));
-        getContentPane().add(SelectName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 260, -1));
-        getContentPane().add(SelectCovid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 260, -1));
+        getContentPane().add(jButton_Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 570, 130, 40));
+        getContentPane().add(SelectName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 260, -1));
+        getContentPane().add(SelectCovid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 260, -1));
 
         jButton_Update.setText("UPDATE");
         jButton_Update.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +118,7 @@ public class DatabaseGUI extends javax.swing.JFrame {
                 jButton_UpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 130, 40));
+        getContentPane().add(jButton_Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 100, 30));
 
         jButton1.setText("EXIT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -112,13 +126,55 @@ public class DatabaseGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 130, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 570, 130, 40));
 
         jLabel3.setText("Covid-19 Result Code");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
-        jLabel5.setText("Name");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        jLabel5.setText("YOUR TICKET PRICE: ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+
+        jLabel6.setText("Name");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+
+        jLabel7.setText("**Note: You may update your name and Coivd-19 Result");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        getContentPane().add(SelectTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 430, 180, -1));
+
+        SelectTicketPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectTicketPriceActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SelectTicketPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 400, 180, -1));
+        getContentPane().add(SelectTravelTypePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 180, -1));
+        getContentPane().add(SelectFlightClassPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, 180, -1));
+        getContentPane().add(SelectLuggagePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 490, 180, -1));
+
+        SelectDiscount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectDiscountActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SelectDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 400, 180, -1));
+
+        jLabel1.setText("Ticket Price");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 400, -1, -1));
+
+        jLabel4.setText("TravelType Price");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, -1, -1));
+
+        jLabel8.setText("FlightClass Price");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
+
+        jLabel9.setText("Luggage Price");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
+
+        jLabel10.setText("Discount");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 400, -1, -1));
+
+        jLabel11.setText("Total Price");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 430, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,6 +223,19 @@ public class DatabaseGUI extends javax.swing.JFrame {
                 SelectName.setText(add1);
                 String add2 = rs.getString("Covid-19 Result Code");
                 SelectCovid.setText(add2);
+                
+                String add3 = rs.getString("Flight Class Price");
+                SelectFlightClassPrice.setText(add3);
+                String add4 = rs.getString("Ticket Price");
+                SelectTicketPrice.setText(add4);
+                String add5 = rs.getString("Travel Type Price");
+                SelectTravelTypePrice.setText(add5);
+                String add6 = rs.getString("Luggage Charge");
+                SelectLuggagePrice.setText(add6);
+                String add7 = rs.getString("Discount");
+                SelectDiscount.setText(add7);
+                String add8 = rs.getString("Total Price");
+                SelectTotalPrice.setText(add8);
             }
         }
         catch(Exception e){
@@ -192,6 +261,14 @@ public class DatabaseGUI extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SelectTicketPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectTicketPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectTicketPriceActionPerformed
+
+    private void SelectDiscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDiscountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectDiscountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,14 +308,28 @@ public class DatabaseGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField SelectCovid;
+    private javax.swing.JTextField SelectDiscount;
+    private javax.swing.JTextField SelectFlightClassPrice;
+    private javax.swing.JTextField SelectLuggagePrice;
     private javax.swing.JTextField SelectName;
+    private javax.swing.JTextField SelectTicketPrice;
+    private javax.swing.JTextField SelectTotalPrice;
+    private javax.swing.JTextField SelectTravelTypePrice;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButton_Delete;
     private javax.swing.JButton jButton_Update;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Name1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

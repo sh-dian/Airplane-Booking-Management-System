@@ -171,7 +171,7 @@ public class RegistrationGUI extends javax.swing.JFrame {
         });
         getContentPane().add(jButton_Cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 106, 33));
 
-        jButton_Registration.setBackground(new java.awt.Color(0, 204, 204));
+        jButton_Registration.setBackground(new java.awt.Color(255, 153, 153));
         jButton_Registration.setForeground(new java.awt.Color(0, 0, 0));
         jButton_Registration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AirplaneSystem/icons8-login-25.png"))); // NOI18N
         jButton_Registration.setText("REGISTER");
@@ -294,7 +294,7 @@ public class RegistrationGUI extends javax.swing.JFrame {
 
     private void jButton_RegistrationMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_RegistrationMouseExited
         // TODO add your handling code here:
-        jButton_Registration.setBackground(new Color(0,204,204));
+        jButton_Registration.setBackground(new Color(255,153,153));
     }//GEN-LAST:event_jButton_RegistrationMouseExited
 
     private void jButton_RegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegistrationActionPerformed

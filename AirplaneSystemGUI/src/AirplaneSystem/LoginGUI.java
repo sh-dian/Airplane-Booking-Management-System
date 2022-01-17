@@ -57,7 +57,7 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel_Password.setText("    PASSWORD");
         getContentPane().add(jLabel_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 127, 25));
 
-        jButton_Login.setBackground(new java.awt.Color(0, 204, 204));
+        jButton_Login.setBackground(new java.awt.Color(255, 153, 153));
         jButton_Login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton_Login.setForeground(new java.awt.Color(0, 0, 0));
         jButton_Login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AirplaneSystem/icons8-login-25.png"))); // NOI18N
@@ -120,7 +120,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void jButton_LoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_LoginMouseExited
         // TODO add your handling code here:
-        jButton_Login.setBackground(new Color(0,204,204));
+        jButton_Login.setBackground(new Color(255,153,153));
     }//GEN-LAST:event_jButton_LoginMouseExited
 
     private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed

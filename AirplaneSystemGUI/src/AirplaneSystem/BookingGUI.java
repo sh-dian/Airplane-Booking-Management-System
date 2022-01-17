@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class BookingGUI extends javax.swing.JFrame {
     
-    int totalPassenger = 0;
+    int totalPassenger = 1;
     /**
      * Creates new form BookingGUI
      */
@@ -71,19 +71,26 @@ public class BookingGUI extends javax.swing.JFrame {
         area = new javax.swing.JTextArea();
         jButtonAdd = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jTextField_FCPrice = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField_TicketPrice = new javax.swing.JTextField();
-        jTextField_Discount = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel_Vaccinated1 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_Total.setText("Total Passenger");
-        getContentPane().add(jLabel_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+        getContentPane().add(jLabel_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
 
         jLabel_Booking1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel_Booking1.setText("BOOKING");
@@ -98,118 +105,118 @@ public class BookingGUI extends javax.swing.JFrame {
         getContentPane().add(jTextField_PAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 60, -1));
 
         jLabel_Destination.setText("Destination");
-        getContentPane().add(jLabel_Destination, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
-        getContentPane().add(jTextField_Destination, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 90, -1));
+        getContentPane().add(jLabel_Destination, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        getContentPane().add(jTextField_Destination, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 90, -1));
 
         jLabel_TravelType.setText("Travel Type");
-        getContentPane().add(jLabel_TravelType, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
-        getContentPane().add(jTextField_TravelType, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 90, -1));
+        getContentPane().add(jLabel_TravelType, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
+        getContentPane().add(jTextField_TravelType, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 90, -1));
 
         jLabel_AirplaneType.setText("Airplane Type");
-        getContentPane().add(jLabel_AirplaneType, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
-        getContentPane().add(jTextField_AirplaneType, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 90, -1));
+        getContentPane().add(jLabel_AirplaneType, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        getContentPane().add(jTextField_AirplaneType, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 90, -1));
 
         jLabel_AirplaneCode.setText("Airplane Code");
-        getContentPane().add(jLabel_AirplaneCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, -1, -1));
-        getContentPane().add(jTextField_AirplaneCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 90, -1));
+        getContentPane().add(jLabel_AirplaneCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
+        getContentPane().add(jTextField_AirplaneCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 90, -1));
 
         jLabel_ClassType.setText("Class Type");
-        getContentPane().add(jLabel_ClassType, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
+        getContentPane().add(jLabel_ClassType, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
 
         jTextField_ClassType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_ClassTypeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_ClassType, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 90, -1));
+        getContentPane().add(jTextField_ClassType, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 90, -1));
 
         jLabel_SeatNum.setText("Seat Num");
-        getContentPane().add(jLabel_SeatNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, -1, -1));
+        getContentPane().add(jLabel_SeatNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
 
         jTextField_SeatNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_SeatNumActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_SeatNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 90, -1));
+        getContentPane().add(jTextField_SeatNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 90, -1));
 
         jLabel_DateTravel.setText("Date Travel");
-        getContentPane().add(jLabel_DateTravel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, -1, -1));
+        getContentPane().add(jLabel_DateTravel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, -1, -1));
 
         jTextField_DateTravel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_DateTravelActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_DateTravel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, 90, -1));
+        getContentPane().add(jTextField_DateTravel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 90, -1));
 
         jLabel_DateReturn.setText("Date Return");
-        getContentPane().add(jLabel_DateReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, -1));
+        getContentPane().add(jLabel_DateReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 480, -1, -1));
 
         jTextField_DateReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_DateReturnActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_DateReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 90, -1));
+        getContentPane().add(jTextField_DateReturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, 90, -1));
 
-        jLabel_OKU.setText("OKU");
-        getContentPane().add(jLabel_OKU, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+        jLabel_OKU.setText("OKU [1] Yes [2] No");
+        getContentPane().add(jLabel_OKU, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 520, -1, -1));
 
-        jLabel_Luggage.setText("Total Luggage");
-        getContentPane().add(jLabel_Luggage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        jLabel_Luggage.setText("Total Luggage (Max 3)");
+        getContentPane().add(jLabel_Luggage, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
 
         jTextField_Luggage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_LuggageActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Luggage, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 90, -1));
+        getContentPane().add(jTextField_Luggage, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 90, -1));
 
-        jLabel_Vaccinated.setText("Vaccine Declaration");
-        getContentPane().add(jLabel_Vaccinated, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
+        jLabel_Vaccinated.setText("[1] Yes [2] No");
+        getContentPane().add(jLabel_Vaccinated, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, -1));
 
         jTextField_Vaccinated.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_VaccinatedActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Vaccinated, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 90, -1));
+        getContentPane().add(jTextField_Vaccinated, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 560, 90, -1));
 
         jLabel_VaccineType.setText("Vaccine Type");
-        getContentPane().add(jLabel_VaccineType, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, -1, -1));
+        getContentPane().add(jLabel_VaccineType, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, -1, -1));
 
         jTextField_VaccineType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_VaccineTypeActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_VaccineType, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, 90, -1));
+        getContentPane().add(jTextField_VaccineType, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 90, -1));
 
         jLabel_SecondDose.setText("Vaccine 2nd Dose Date");
-        getContentPane().add(jLabel_SecondDose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
+        getContentPane().add(jLabel_SecondDose, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 630, -1, -1));
 
         jTextField_Vaccine1st.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_Vaccine1stActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Vaccine1st, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 570, 90, -1));
-        getContentPane().add(jTextField_Vaccine2nd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 90, -1));
+        getContentPane().add(jTextField_Vaccine1st, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 610, 90, -1));
+        getContentPane().add(jTextField_Vaccine2nd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, 90, -1));
 
         jLabel_Covid19.setText("Covid-19 Result Code");
-        getContentPane().add(jLabel_Covid19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, -1, -1));
+        getContentPane().add(jLabel_Covid19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 650, -1, -1));
 
         jTextField_Covid19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_Covid19ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Covid19, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 610, 90, -1));
+        getContentPane().add(jTextField_Covid19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 650, 90, -1));
 
         jLabel_FirstDose.setText("Vaccine 1st Dose Date");
-        getContentPane().add(jLabel_FirstDose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, -1, -1));
-        getContentPane().add(jTextField_OKU, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 60, -1));
+        getContentPane().add(jLabel_FirstDose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
+        getContentPane().add(jTextField_OKU, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 60, -1));
 
         jButton_Book.setText("BOOK");
         jButton_Book.addActionListener(new java.awt.event.ActionListener() {
@@ -217,14 +224,14 @@ public class BookingGUI extends javax.swing.JFrame {
                 jButton_BookActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Book, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 460, 130, 40));
+        getContentPane().add(jButton_Book, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 490, 130, 40));
 
         jTextField_TotalPassenger.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_TotalPassengerActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_TotalPassenger, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 60, -1));
+        getContentPane().add(jTextField_TotalPassenger, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 60, -1));
 
         area.setColumns(20);
         area.setRows(5);
@@ -238,7 +245,7 @@ public class BookingGUI extends javax.swing.JFrame {
                 jButtonAddActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 520, 130, 40));
+        getContentPane().add(jButtonAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 550, 130, 40));
 
         jButton1.setText("EXIT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -246,28 +253,50 @@ public class BookingGUI extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 580, 130, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 610, 130, 40));
 
-        jTextField_FCPrice.setText("Flight Class Price");
-        getContentPane().add(jTextField_FCPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 180, -1));
-
-        jTextField1.setText("Total");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 180, -1));
-
-        jTextField_TicketPrice.setText("Ticket Price");
-        getContentPane().add(jTextField_TicketPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, 180, -1));
-
-        jTextField_Discount.setText("Discount");
-        getContentPane().add(jTextField_Discount, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 180, -1));
-
-        jLabel1.setText("Passenger : 0");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 90, -1));
+        jLabel1.setText("Passenger : 1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 90, -1));
 
         jLabel2.setText("PROCEED TO \"ADD\" OTHER PASSENGER (IF ANY)");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, -1, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, -1, 20));
 
         jLabel3.setText("PLEASE CLICK \"BOOK\" BEFORE");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, -1, 20));
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "1. Kedah \t", "2. Selangor  \t\t", "3. Penang \t\t", "4. Perak \t", "5. Pahang ", "6. Johor \t", "7. Melaka \t", "8. Kelantan/Terengganu \t", "9. Sarawak \t", "10. Sabah" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList2);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 170, 70));
+
+        jLabel4.setText("AirAsia (1- AA052 / 2- AA889) | Mas (1- MAS55 / 2 -MAS78) |  Malindo (1-MD460 / 2- MD157)");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+
+        jLabel5.setText("[1] One Way Trip  [2] Round Trip");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+
+        jLabel6.setText("[1] AirAsia   [2] Mas   [3] Malindo");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
+
+        jLabel8.setText("**Note: If travel type [1], no need to input date return.");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+
+        jLabel10.setText("[1] Sinovac  [2] Astrazeneca  [3] Pfizer");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, -1, -1));
+
+        jLabel11.setText("**Note: If you choose 3, seat will be automatically set.");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+
+        jLabel_Vaccinated1.setText("Vaccine Declaration");
+        getContentPane().add(jLabel_Vaccinated1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, -1, -1));
+
+        jLabel12.setText("[1] Business  [2] First  [3] Economy");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -333,14 +362,11 @@ public class BookingGUI extends javax.swing.JFrame {
         myP.setLuggage(Integer.valueOf(jTextField_Luggage.getText()));
         
         
-            if(myP.getTicket().getFlightClass() == 1){
-                bc.setSeatNum(Integer.valueOf(jTextField_SeatNum.getText()));
-            }
-            else if(myP.getTicket().getFlightClass() == 2){
-                fc.setSeatNum(Integer.valueOf(jTextField_SeatNum.getText()));
+            if(myP.getTicket().getFlightClass() == 3){
+                i = ec.Random();
             }
             else{
-                i = ec.Random();
+                i = Integer.valueOf(jTextField_SeatNum.getText());
             }
         
         myP.getVaccine().setVaccineDeclaration(Integer.valueOf(jTextField_Vaccinated.getText()));
@@ -359,10 +385,10 @@ public class BookingGUI extends javax.swing.JFrame {
             float discount = obj2.Discount((Passenger) myP);
             float total = obj2.Amount(obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)), obj2.Discount((Passenger) myP));
 
-            jTextField_FCPrice.setText(Float.toString(fcPrice));
-            jTextField_TicketPrice.setText(Float.toString(tprice));
-            jTextField_Discount.setText(Float.toString(discount));
-            jTextField1.setText(Float.toString(total));
+            //jTextField_FCPrice.setText(Float.toString(fcPrice));
+            //jTextField_TicketPrice.setText(Float.toString(tprice));
+            //jTextField_Discount.setText(Float.toString(discount));
+            //jTextField1.setText(Float.toString(total));
         
         //Receipt
         if(myP.Booking(i,fcPrice, discount, total)){
@@ -376,28 +402,33 @@ public class BookingGUI extends javax.swing.JFrame {
             area.setText(area.getText()+"Name: "+jTextField_PName.getText());
             area.setText(area.getText()+"\nDestination: "+ myP.getTicket().FlightDestination(myP.getTicket().getDestination()));
             area.setText(area.getText()+"\nTravel Type : "+myP.getTicket().Type(myP.getTicket().getTravelType()));
-            area.setText(area.getText()+"\nFlight Class: "+myP.getTicket().FClass(myP.getTicket().getFlightClass()));
-            area.setText(area.getText()+"\nDate Travel: "+jTextField_DateTravel.getText());
-            area.setText(area.getText()+"\nDate Return: "+jTextField_DateReturn.getText());
-            area.setText(area.getText()+"\nTotal Luggage: "+Integer.valueOf(jTextField_Luggage.getText()));
-            area.setText(area.getText()+"\nOKU: "+ myP.AreOku(myP.getOkuDeclaration()));
             
-                if(Integer.valueOf(jTextField_ClassType.getText()).equals(1) || Integer.valueOf(jTextField_ClassType.getText()).equals(2)){
-                    area.setText(area.getText()+"\nSeat Num: "+jTextField_SeatNum.getText());
+                area.setText(area.getText()+"\n\nAirplane Type: "+obj.AirplaneName());
+                area.setText(area.getText()+"\nAirplane Code: "+obj.AirplaneCode());
+            
+                area.setText(area.getText()+"\nClass Type: "+myP.getTicket().FClass(myP.getTicket().getFlightClass()));
+            
+                if(Integer.valueOf(jTextField_ClassType.getText()).equals(3)){
+                    area.setText(area.getText()+"\nSeat Number: "+i);
                 }
                 else{
-                    area.setText(area.getText()+"\nSeat Num: "+i);
+                    area.setText(area.getText()+"\nSeat Number: "+jTextField_SeatNum.getText());
                 }
+            
+            area.setText(area.getText()+"\nDate Travel: "+jTextField_DateTravel.getText());
+            area.setText(area.getText()+"\nDate Return: "+jTextField_DateReturn.getText());
+            
+            area.setText(area.getText()+"\n\nTotal Luggage: "+Integer.valueOf(jTextField_Luggage.getText()));
+            area.setText(area.getText()+"\nOKU: "+ myP.AreOku(myP.getOkuDeclaration()));
             
             area.setText(area.getText()+"\nVaccine Type: "+ myP.getVaccine().DisplayVaccineType(myP.getVaccine().getVaccineType()));
             area.setText(area.getText()+"\nFirst Dose Date: "+jTextField_Vaccine1st.getText());
             area.setText(area.getText()+"\nSecond Dose Date: "+jTextField_Vaccine2nd.getText());
             area.setText(area.getText()+"\nCovid-19 Result Code: "+jTextField_Covid19.getText());
-            
-                area.setText(area.getText()+"\nAirplane Name: "+obj.AirplaneName());
-                area.setText(area.getText()+"\nAirplane Code: "+obj.AirplaneCode());
                 
-                area.setText(area.getText()+"\nFlight Class Price: "+obj2.FCPrice((Passenger)myP));
+                area.setText(area.getText()+"\n---------------------------------------------------------\n");
+
+                area.setText(area.getText()+"\n\nFlight Class Price: "+obj2.FCPrice((Passenger)myP));
                 area.setText(area.getText()+"\nTotal Ticket Price:: "+obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)));
                 area.setText(area.getText()+"\nDiscount : "+obj2.Discount((Passenger) myP));
                 area.setText(area.getText()+"\nTotal Price : RM "+obj2.Amount(obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)), obj2.Discount((Passenger) myP)));
@@ -443,6 +474,8 @@ public class BookingGUI extends javax.swing.JFrame {
             jTextField_Vaccine2nd.setText("");
             jTextField_Covid19.setText("");
             jTextField_OKU.setText("");
+            jTextField_AirplaneType.setText("");
+            jTextField_AirplaneCode.setText("");
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "Reach Limit", "LIMIT!", JOptionPane.ERROR_MESSAGE);
@@ -495,8 +528,16 @@ public class BookingGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButton_Book;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_Age;
     private javax.swing.JLabel jLabel_AirplaneCode;
     private javax.swing.JLabel jLabel_AirplaneType;
@@ -515,9 +556,11 @@ public class BookingGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_Total;
     private javax.swing.JLabel jLabel_TravelType;
     private javax.swing.JLabel jLabel_Vaccinated;
+    private javax.swing.JLabel jLabel_Vaccinated1;
     private javax.swing.JLabel jLabel_VaccineType;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField_AirplaneCode;
     private javax.swing.JTextField jTextField_AirplaneType;
     private javax.swing.JTextField jTextField_ClassType;
@@ -525,14 +568,11 @@ public class BookingGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_DateReturn;
     private javax.swing.JTextField jTextField_DateTravel;
     private javax.swing.JTextField jTextField_Destination;
-    private javax.swing.JTextField jTextField_Discount;
-    private javax.swing.JTextField jTextField_FCPrice;
     private javax.swing.JTextField jTextField_Luggage;
     private javax.swing.JTextField jTextField_OKU;
     private javax.swing.JTextField jTextField_PAge;
     private javax.swing.JTextField jTextField_PName;
     private javax.swing.JTextField jTextField_SeatNum;
-    private javax.swing.JTextField jTextField_TicketPrice;
     private javax.swing.JTextField jTextField_TotalPassenger;
     private javax.swing.JTextField jTextField_TravelType;
     private javax.swing.JTextField jTextField_Vaccinated;
