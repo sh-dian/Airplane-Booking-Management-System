@@ -6,10 +6,14 @@ package AirplaneSystem;
 
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
-/**
- *
- * @author User
- */
+/** 
+ * @Group 8 
+ * 1. SHARIFAH LYDIEANNA BT SYED SHAMSUDDIN (CB20050)
+ * 2. NURUL ATIKAH BT FADZIL HALMI (CB20133)
+ * 3. AHMAD HILMAN BIN AHMAD BADRUDDIN (CB20093)
+ * 4. WAN MUHAMMAD DZULKHAIRIE BIN WAN ZAHARI (CB20096)
+ * 5. HANIS SYAFIQA BT KHAIRIL AZLI (CB20106)
+ */ 
 public class BookingGUI extends javax.swing.JFrame {
     
     int totalPassenger = 1;
@@ -427,8 +431,11 @@ public class BookingGUI extends javax.swing.JFrame {
             area.setText(area.getText()+"\nCovid-19 Result Code: "+jTextField_Covid19.getText());
                 
                 area.setText(area.getText()+"\n---------------------------------------------------------\n");
-
-                area.setText(area.getText()+"\n\nFlight Class Price: "+obj2.FCPrice((Passenger)myP));
+                
+                area.setText(area.getText()+"\n\nTicket Class Price: "+myP.getTicket().DestinationPrice(myP.getTicket().getDestination()));
+                 area.setText(area.getText()+"\nTravel Type Price: "+myP.getTicket().TravelPrice(myP.getTicket().getTravelType(), myP.getTicket().getDestination()));
+                area.setText(area.getText()+"\nFlight Class Price: "+obj2.FCPrice((Passenger)myP));
+                area.setText(area.getText()+"\nLuggage Price: "+myP.LuggagePrice(myP.getLuggage()));
                 area.setText(area.getText()+"\nTotal Ticket Price:: "+obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)));
                 area.setText(area.getText()+"\nDiscount : "+obj2.Discount((Passenger) myP));
                 area.setText(area.getText()+"\nTotal Price : RM "+obj2.Amount(obj2.TicketPrice((Passenger)myP, obj2.FCPrice((Passenger)myP)), obj2.Discount((Passenger) myP)));
