@@ -82,7 +82,7 @@ public class Malindo extends Airplane implements AirplaneDetail{
                 AirplaneCode = "MD460";
             }
             else{
-                AirplaneCode = "MD460";
+                AirplaneCode = "MD157";
             }
         }
         
