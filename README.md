@@ -11,7 +11,7 @@ The concept applied in this source code for the system are:
  3. Inheritance & Polymorphism
  4. Abstract & Interface
  5. GUI
- 6. Database (Xampp - SQL)
+ 6. Basic Database Implementation (Xampp - SQL)
  
  
  <h3 align="left">Language:</h3>
