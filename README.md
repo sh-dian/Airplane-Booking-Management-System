@@ -14,5 +14,5 @@ The concept applied in this source code for the system are:
  6. Basic Database Implementation (Xampp - SQL)
  
  
- <h3 align="left">Language:</h3>
+ <h3 align="left"></i>Language:</h3>
 <p align="left"> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a><a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a>
